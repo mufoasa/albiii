@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <style>
+    body { font-family: Arial; max-width: 900px; margin: 40px auto; }
+    input, button { padding: 10px; margin: 5px 0; width: 100%; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+  </style>
+</head>
+<body>
+
+<div id="loginBox">
+  <h2>Admin Login</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p id="msg"></p>
+</div>
+
+<div id="panel" style="display:none;">
+  <h2>Appointments</h2>
+  <button onclick="loadData()">Refresh</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="data"></tbody>
+  </table>
+
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const supabase = createClient(
+  'https://iwiwclbbflmykpklzgfj.supabase.co',
+  'YOUR_PUBLISHABLE_KEY'
+);
+
+// LOGIN
+window.login = async () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    document.getElementById('msg').textContent = error.message;
+    return;
+  }
+
+  document.getElementById('loginBox').style.display = 'none';
+  document.getElementById('panel').style.display = 'block';
+
+  loadData();
+};
+
+// LOAD APPOINTMENTS
+window.loadData = async () => {
+  const { data, error } = await supabase
+    .from('appointments')
+    .select('*')
+    .order('appointment_date', { ascending: true });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const tbody = document.getElementById('data');
+  tbody.innerHTML = '';
+
+  data.forEach(a => {
+    tbody.innerHTML += `
+      <tr>
+        <td>${a.name}</td>
+        <td>${a.phone}</td>
+        <td>${a.email}</td>
+        <td>${a.appointment_date}</td>
+        <td>${a.appointment_time}</td>
+      </tr>
+    `;
+  });
+};
+
+// LOGOUT
+window.logout = async () => {
+  await supabase.auth.signOut();
+  location.reload();
+};
+</script>
+
+</body>
+</html>
