@@ -1,43 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Login</title>
-  <style>
-    body { font-family: Arial; max-width: 900px; margin: 40px auto; }
-    input, button { padding: 10px; margin: 5px 0; width: 100%; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; }
-  </style>
+<meta charset="UTF-8">
+<title>Clinic Admin</title>
+
+<style>
+:root {
+  --cream: #F5F2EE;
+  --charcoal: #1C1C1A;
+  --gold: #C8A97E;
+  --stone: #9B9088;
+  --mist: #E8E4DF;
+  --mist-dark: #D8D3CC;
+  --border: rgba(28,28,26,0.12);
+  --border-gold: rgba(200,169,126,0.35);
+}
+
+body {
+  margin: 0;
+  background: var(--charcoal);
+  color: var(--cream);
+  font-family: system-ui, sans-serif;
+}
+
+input, button {
+  font-family: inherit;
+}
+</style>
 </head>
+
 <body>
 
-<div id="loginBox">
-  <h2>Admin Login</h2>
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+<!-- LOGIN -->
+<div id="loginBox" style="max-width:320px; margin:120px auto; display:flex; flex-direction:column; gap:10px;">
+  <h2 style="color:var(--gold)">Admin Login</h2>
+
+  <input id="email" type="email" placeholder="Email" style="padding:12px;">
+  <input id="password" type="password" placeholder="Password" style="padding:12px;">
+
+  <button onclick="login()" style="padding:12px; background:var(--gold); border:none; cursor:pointer;">
+    Login
+  </button>
+
   <p id="msg"></p>
 </div>
 
+<!-- DASHBOARD -->
 <div id="panel" style="display:none;">
-  <h2>Appointments</h2>
-  <button onclick="loadData()">Refresh</button>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Date</th>
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody id="data"></tbody>
-  </table>
+  <div style="display:flex; min-height:100vh;">
 
-  <button onclick="logout()">Logout</button>
+    <!-- SIDEBAR -->
+    <div style="
+      width:260px;
+      background:rgba(0,0,0,0.25);
+      border-right:1px solid var(--border);
+      padding:24px;
+    ">
+      <h2 style="color:var(--gold); margin-bottom:30px;">
+        Clinic Admin
+      </h2>
+
+      <button onclick="loadData()" style="width:100%; margin-bottom:10px; padding:12px; background:var(--gold); border:none; cursor:pointer;">
+        All Appointments
+      </button>
+
+      <button onclick="loadToday()" style="width:100%; margin-bottom:10px; padding:12px; background:transparent; border:1px solid var(--border-gold); color:var(--cream); cursor:pointer;">
+        Today
+      </button>
+
+      <button onclick="logout()" style="width:100%; margin-top:30px; padding:12px; background:transparent; border:1px solid var(--border); color:var(--stone); cursor:pointer;">
+        Logout
+      </button>
+    </div>
+
+    <!-- MAIN -->
+    <div style="flex:1; padding:30px;">
+
+      <h1 style="margin-bottom:20px;">Appointments</h1>
+
+      <!-- STATS -->
+      <div style="display:flex; gap:15px; margin-bottom:20px;">
+        <div style="flex:1; padding:15px; background:rgba(255,255,255,0.03); border:1px solid var(--border);">
+          <div style="color:var(--stone); font-size:12px;">Today</div>
+          <div id="todayCount" style="font-size:22px;">0</div>
+        </div>
+
+        <div style="flex:1; padding:15px; background:rgba(255,255,255,0.03); border:1px solid var(--border);">
+          <div style="color:var(--stone); font-size:12px;">Total</div>
+          <div id="totalCount" style="font-size:22px;">0</div>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div style="overflow:auto; border:1px solid var(--border);">
+        <table style="width:100%; border-collapse:collapse;">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.03);">
+              <th style="padding:12px; text-align:left;">Name</th>
+              <th style="padding:12px;">Phone</th>
+              <th style="padding:12px;">Email</th>
+              <th style="padding:12px;">Date</th>
+              <th style="padding:12px;">Time</th>
+              <th style="padding:12px;">Status</th>
+              <th style="padding:12px;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <script type="module">
@@ -48,12 +122,12 @@ const supabase = createClient(
   'sb_publishable_BRXsPkWLiAJq18wHAqndgw_bpQvo4Gu'
 );
 
-// LOGIN
+/* ---------------- LOGIN ---------------- */
 window.login = async () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithPassword({
     email,
     password
   });
@@ -69,35 +143,80 @@ window.login = async () => {
   loadData();
 };
 
-// LOAD APPOINTMENTS
+/* ---------------- LOAD ALL ---------------- */
 window.loadData = async () => {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from('appointments')
     .select('*')
     .order('appointment_date', { ascending: true });
 
-  if (error) {
-    console.error(error);
-    return;
-  }
+  render(data);
+};
 
+/* ---------------- LOAD TODAY ---------------- */
+window.loadToday = async () => {
+  const today = new Date().toISOString().split('T')[0];
+
+  const { data } = await supabase
+    .from('appointments')
+    .select('*')
+    .eq('appointment_date', today);
+
+  render(data);
+};
+
+/* ---------------- RENDER ---------------- */
+function render(data) {
   const tbody = document.getElementById('data');
   tbody.innerHTML = '';
 
+  const today = new Date().toISOString().split('T')[0];
+
+  let todayCount = 0;
+
   data.forEach(a => {
+
+    if (a.appointment_date === today) todayCount++;
+
+    const status = a.appointment_date === today
+      ? `<span style="color:var(--gold)">Today</span>`
+      : `<span style="color:var(--stone)">Upcoming</span>`;
+
     tbody.innerHTML += `
-      <tr>
-        <td>${a.name}</td>
-        <td>${a.phone}</td>
-        <td>${a.email}</td>
-        <td>${a.appointment_date}</td>
-        <td>${a.appointment_time}</td>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:10px;">${a.name}</td>
+        <td style="padding:10px;">${a.phone}</td>
+        <td style="padding:10px;">${a.email}</td>
+        <td style="padding:10px;">${a.appointment_date}</td>
+        <td style="padding:10px;">${a.appointment_time}</td>
+        <td style="padding:10px;">${status}</td>
+        <td style="padding:10px;">
+          <button onclick="deleteAppt(${a.id})"
+            style="background:transparent; border:1px solid var(--border-gold); color:var(--gold); padding:6px 10px; cursor:pointer;">
+            Delete
+          </button>
+        </td>
       </tr>
     `;
   });
+
+  document.getElementById('totalCount').textContent = data.length;
+  document.getElementById('todayCount').textContent = todayCount;
+}
+
+/* ---------------- DELETE ---------------- */
+window.deleteAppt = async (id) => {
+  if (!confirm("Delete appointment?")) return;
+
+  await supabase
+    .from('appointments')
+    .delete()
+    .eq('id', id);
+
+  loadData();
 };
 
-// LOGOUT
+/* ---------------- LOGOUT ---------------- */
 window.logout = async () => {
   await supabase.auth.signOut();
   location.reload();
