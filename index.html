@@ -686,6 +686,36 @@ color:var(--stone);
 .success-h{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:300;color:var(--cream);margin-bottom:.75rem}
 .success-p{font-size:.875rem;font-weight:300;color:rgba(245,242,238,.45);line-height:1.6}
 
+  #bookingForm input,
+#bookingForm select {
+  border: 1px solid rgba(200,169,126,0.25);
+  background: rgba(0,0,0,0.25);
+  color: var(--cream);
+  border-radius: 10px;
+  transition: 0.3s;
+  outline: none;
+}
+
+#bookingForm input:focus,
+#bookingForm select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(200,169,126,0.15);
+}
+
+#bookingForm button {
+  transition: 0.3s;
+}
+
+#bookingForm button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+#message {
+  font-size: 0.95rem;
+  min-height: 20px;
+}
+
 /* --- FAQ --- */
 .faq-grid{
   display:grid;grid-template-columns:1fr;gap:4rem;
