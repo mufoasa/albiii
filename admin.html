@@ -102,7 +102,8 @@ input,button { font-family:inherit; }
 </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const supabase = createClient(
   "https://iwiwclbbflmykpklzgfj.supabase.co",
