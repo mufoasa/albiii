@@ -7,28 +7,25 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
-<style>
-:root {
-  --cream:#F5F2EE;
-  --charcoal:#1C1C1A;
-  --gold:#C8A97E;
-  --border:rgba(255,255,255,0.1);
-  --border-gold:rgba(200,169,126,0.4);
-}
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<style>
 body {
   margin:0;
   font-family:system-ui;
-  background:var(--charcoal);
-  color:var(--cream);
+  background:#1C1C1A;
+  color:#F5F2EE;
 }
 
-input,button { font-family:inherit; }
 #calendar {
   background:white;
   color:black;
   padding:10px;
   border-radius:10px;
+}
+
+button {
+  cursor:pointer;
 }
 </style>
 </head>
@@ -37,12 +34,12 @@ input,button { font-family:inherit; }
 
 <!-- LOGIN -->
 <div id="loginBox" style="max-width:320px;margin:120px auto;display:flex;flex-direction:column;gap:10px;">
-  <h2 style="color:var(--gold)">Admin Login</h2>
+  <h2 style="color:#C8A97E;">Admin Login</h2>
 
   <input id="email" placeholder="Email" type="email" style="padding:10px;">
   <input id="password" placeholder="Password" type="password" style="padding:10px;">
 
-  <button onclick="login()" style="padding:10px;background:var(--gold);border:none;">
+  <button onclick="login()" style="padding:10px;background:#C8A97E;border:none;">
     Login
   </button>
 
@@ -51,11 +48,12 @@ input,button { font-family:inherit; }
 
 <!-- DASHBOARD -->
 <div id="panel" style="display:none;">
+
 <div style="display:flex;min-height:100vh;">
 
 <!-- SIDEBAR -->
-<div style="width:250px;padding:20px;border-right:1px solid var(--border);">
-  <h2 style="color:var(--gold)">Clinic Admin</h2>
+<div style="width:220px;padding:20px;border-right:1px solid #333;">
+  <h3 style="color:#C8A97E;">Clinic Admin</h3>
 
   <button onclick="loadData()" style="width:100%;margin:5px;">All</button>
   <button onclick="loadToday()" style="width:100%;margin:5px;">Today</button>
@@ -75,7 +73,7 @@ input,button { font-family:inherit; }
   </div>
 
   <div style="flex:1;background:#222;padding:10px;">
-    <h3>Day</h3>
+    <h3>Day View</h3>
     <div id="dayAppointments">Click a date</div>
   </div>
 
@@ -85,13 +83,13 @@ input,button { font-family:inherit; }
 <table style="width:100%;border-collapse:collapse;">
 <thead>
 <tr>
-<th>Name</th>
-<th>Phone</th>
-<th>Email</th>
-<th>Date</th>
-<th>Time</th>
-<th>Status</th>
-<th>Action</th>
+  <th>Name</th>
+  <th>Phone</th>
+  <th>Email</th>
+  <th>Date</th>
+  <th>Time</th>
+  <th>Status</th>
+  <th>Action</th>
 </tr>
 </thead>
 
@@ -102,20 +100,18 @@ input,button { font-family:inherit; }
 </div>
 </div>
 
-<script type="module">
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const supabase = createClient(
+<script>
+const supabase = supabaseJs.createClient(
   "https://iwiwclbbflmykpklzgfj.supabase.co",
   "sb_publishable_BRXsPkWLiAJq18wHAqndgw_bpQvo4Gu"
 );
 
-/* STATE */
 let calendar;
 let allAppointments = [];
 
 /* LOGIN */
-window.login = async () => {
+async function login() {
+
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
@@ -133,20 +129,22 @@ window.login = async () => {
 
   loadData();
   loadCalendar();
-};
+}
 
-/* LOAD DATA */
-window.loadData = async () => {
+/* LOAD */
+async function loadData() {
+
   const { data } = await supabase
     .from("appointments")
     .select("*")
     .order("appointment_date", { ascending:true });
 
   render(data);
-};
+}
 
 /* TODAY */
-window.loadToday = async () => {
+async function loadToday() {
+
   const today = new Date().toISOString().split("T")[0];
 
   const { data } = await supabase
@@ -155,19 +153,17 @@ window.loadToday = async () => {
     .eq("appointment_date", today);
 
   render(data);
-};
+}
 
-/* RENDER TABLE */
+/* RENDER */
 function render(data) {
 
   const tbody = document.getElementById("data");
   tbody.innerHTML = "";
 
-  const today = new Date().toISOString().split("T")[0];
-
   data.forEach(a => {
 
-    const statusColor = {
+    const colors = {
       pending:"#f0ad4e",
       confirmed:"#28a745",
       completed:"#17a2b8",
@@ -183,7 +179,7 @@ function render(data) {
       <td>${a.appointment_date}</td>
       <td>${a.appointment_time}</td>
 
-      <td style="color:${statusColor[a.status] || '#aaa'};">
+      <td style="color:${colors[a.status] || '#fff'};">
         ${a.status || 'pending'}
       </td>
 
@@ -201,28 +197,38 @@ function render(data) {
 }
 
 /* UPDATE STATUS */
-window.updateStatus = async (id,status) => {
+async function updateStatus(id,status) {
 
-  await supabase
+  const { error } = await supabase
     .from("appointments")
     .update({ status })
     .eq("id", id);
 
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
   loadData();
   loadCalendar();
-};
+}
 
 /* DELETE */
-window.deleteAppt = async (id) => {
+async function deleteAppt(id) {
 
-  await supabase
+  const { error } = await supabase
     .from("appointments")
     .delete()
     .eq("id", id);
 
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
   loadData();
   loadCalendar();
-};
+}
 
 /* CALENDAR */
 async function loadCalendar() {
@@ -271,7 +277,7 @@ function showDay(date) {
   }
 
   box.innerHTML = list.map(a => `
-    <div style="border:1px solid #444;padding:5px;margin-bottom:5px;">
+    <div style="border:1px solid #444;padding:6px;margin-bottom:6px;">
       <b>${a.name}</b><br>
       ${a.appointment_time}<br>
       ${a.status || 'pending'}
@@ -280,11 +286,10 @@ function showDay(date) {
 }
 
 /* LOGOUT */
-window.logout = async () => {
+async function logout() {
   await supabase.auth.signOut();
   location.reload();
-};
-
+}
 </script>
 
 </body>
