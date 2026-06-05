@@ -150,12 +150,35 @@ nav.scrolled{
   background:var(--charcoal);overflow:hidden;
   display:flex;flex-direction:column;
 }
-.hero-bg{
-  position:absolute;inset:0;
-  transform:scale(1.1);
-  will-change:transform;
+
+/* SLIDESHOW — zëvendëson .hero-bg */
+.hero-slides{position:absolute;inset:0}
+.hero-slide{
+  position:absolute;inset:0;opacity:0;
+  transition:opacity 1.2s cubic-bezier(.4,0,.2,1);
 }
-.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(.65)}
+.hero-slide.active{opacity:1}
+.hero-slide img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.42) saturate(.65);
+  animation:kenBurns 8s ease-out forwards;
+}
+@keyframes kenBurns{0%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+/* Dots */
+.slide-dots{
+  position:absolute;bottom:110px;right:4rem;z-index:3;
+  display:flex;flex-direction:column;gap:8px;
+}
+.dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(245,242,238,.3);
+  border:1px solid rgba(200,169,126,.3);
+  cursor:pointer;transition:background .3s,transform .3s;
+}
+.dot.active{background:var(--gold);transform:scale(1.3)}
+@media(max-width:768px){.slide-dots{right:1.5rem;bottom:100px}}
+
 .hero-overlay{
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(155deg,rgba(28,24,20,.52) 0%,rgba(28,24,20,.18) 55%,rgba(200,169,126,.06) 100%);
@@ -167,31 +190,25 @@ nav.scrolled{
   animation:fadeUp .9s .3s both;
 }
 @media(max-width:768px){.hero-content{padding:0 1.5rem 4rem}}
-
 .hero-eyebrow{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem}
 .hero-eyebrow .pipe{display:inline-block;height:1px;width:64px;background:var(--border-gold)}
 .hero-eyebrow span{font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase}
-
 .hero-h1{
   font-family:"Cormorant Garamond",serif;
   font-size:clamp(3.2rem,8.5vw,8rem);
   font-weight:300;letter-spacing:-.035em;line-height:.95;
-  color:var(--cream);
-  overflow:hidden;
+  color:var(--cream);overflow:hidden;
 }
 .hero-h1 em{color:var(--gold);font-style:italic}
 .hero-h1 .line{display:block;animation:lineUp 1.1s cubic-bezier(.16,1,.3,1) both}
 .hero-h1 .line:nth-child(1){animation-delay:.45s}
 .hero-h1 .line:nth-child(2){animation-delay:.58s}
-
 .hero-bottom{
   display:flex;flex-direction:column;gap:1.5rem;
   margin-top:2.5rem;animation:fadeUp .9s .85s both;
 }
 @media(min-width:768px){.hero-bottom{flex-direction:row;align-items:flex-end;justify-content:space-between}}
-
 .hero-sub{color:rgba(245,242,238,.58);font-weight:300;font-size:.9375rem;line-height:1.7;max-width:320px}
-
 .hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
 .btn-primary{
   display:inline-flex;align-items:center;gap:1rem;
@@ -211,7 +228,6 @@ nav.scrolled{
 .btn-outline:hover{background:var(--gold);border-color:var(--gold);color:var(--charcoal)}
 .hero-tel{font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,242,238,.45);transition:color .3s}
 .hero-tel:hover{color:rgba(245,242,238,.75)}
-
 .hero-stats{
   position:absolute;bottom:0;left:0;right:0;z-index:2;
   border-top:1px solid rgba(200,169,126,.18);
@@ -226,7 +242,6 @@ nav.scrolled{
 .stat{display:flex;align-items:baseline;gap:.75rem;white-space:nowrap}
 .stat-n{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:300;color:var(--cream)}
 .stat-l{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,169,126,.65)}
-
 /* --- SECTION COMMON --- */
 section{position:relative}
 .section-pad{padding:8rem 0}
@@ -1073,7 +1088,7 @@ body::after {
   <!-- brand -->
   <div class="brand">
     <div class="brand-name">PRIME DENTAL</div>
-    <div class="brand-tag">Clinic · Excellence in Care</div>
+    <div class="brand-tag">Trust · Excellence · Care</div>
   </div>
  
   <!-- scene -->
@@ -1365,23 +1380,36 @@ body::after {
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero">
-  <div class="hero-bg">
-    <img src="https://i.imgur.com/kBrQcPP.png" alt="Prime Dental">
-  </div>
-  <div class="hero-overlay"></div>
 
+  <!-- SLIDESHOW — zëvendëson hero-bg -->
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active">
+      <img src="https://i.imgur.com/kBrQcPP.png" alt="Prime Dental">
+    </div>
+    <div class="hero-slide">
+      <img src="https://vanajahospital.com/assets/images/slider/consultant-dental-surgeon-2.jpg" alt="Prime Dental">
+    </div>
+    <div class="hero-slide">
+      <img src="https://teethandsmile.pk/wp-content/uploads/2024/01/services-details.jpg" alt="Prime Dental">
+    </div>
+    <div class="hero-slide">
+      <img src="https://mysmilehealth.com/wp-content/uploads/2023/02/What-to-look-for-in-a-dental-practice.jpg" alt="Prime Dental">
+    </div>
+  </div>
+
+  <div class="slide-dots" id="slideDots"></div>
+
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="label" style="color:var(--gold)">Stomatologji Premium</span>
       <span class="pipe"></span>
       <span class="label" style="color:rgba(245,242,238,.42)">Tetovë, Maqedoni e Veriut</span>
     </div>
-
     <h1 class="hero-h1">
       <span class="line">Buzëqeshja juaj,</span>
       <span class="line"><em>kryevepra jonë.</em></span>
     </h1>
-
     <div class="hero-bottom">
       <p class="hero-sub">Ekspertizë ndërkombëtare, teknologji e gjeneratës së re dhe kujdes personal — në zemër të Tetovës.</p>
       <div class="hero-actions">
@@ -1393,12 +1421,10 @@ body::after {
       </div>
     </div>
   </div>
-
   <div class="scroll-cue">
     <span>Zbulo</span>
     <div class="scroll-line"></div>
   </div>
-
   <div class="hero-stats">
     <div class="stats-inner">
       <div class="stat"><span class="stat-n">12+</span><span class="stat-l">Vjet Eksperiencë</span></div>
@@ -2265,6 +2291,36 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
   document.getElementById('bookingSuccess').style.display  = 'block';
 });
 </script>
+<script>
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  const dotsEl = document.getElementById('slideDots');
+  let current = 0, timer;
 
+  slides.forEach(function(_, i){
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', function(){ go(i); });
+    dotsEl.appendChild(d);
+  });
+
+  function go(n){
+    slides[current].classList.remove('active');
+    dotsEl.children[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dotsEl.children[current].classList.add('active');
+    var img = slides[current].querySelector('img');
+    img.style.animation = 'none';
+    img.offsetHeight;
+    img.style.animation = '';
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  function next(){ go((current + 1) % slides.length); }
+  timer = setInterval(next, 5000);
+})();
+</script>
 </body>
 </html>
