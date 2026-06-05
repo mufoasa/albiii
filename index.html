@@ -1880,96 +1880,89 @@ Skopje, Cyril and Methodius · Spec. Implantologist
         </div>
       </div>
 
-     <div class="reveal reveal-d2">
-  <div style="
-    border:1px solid var(--border-gold);
-    padding:3rem;
-    background:linear-gradient(135deg, rgba(200,169,126,.06), transparent);
-    backdrop-filter:blur(10px);
+     <!-- RIGHT COLUMN -->
+<div class="reveal reveal-d2">
+  <div id="bookingFormWrap" style="
+    border: 1px solid var(--border-gold);
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(200,169,126,.05), transparent);
   ">
-  
-<div style="
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.6rem;
-  color:var(--cream);
-  font-weight:300;
-  margin-bottom:1.5rem;">
-  Rezervo Termin
-</div>
+    <div style="
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.5rem;
+      color:var(--cream);
+      font-weight:300;
+      margin-bottom:2rem;
+      padding-bottom:1.25rem;
+      border-bottom:1px solid rgba(245,242,238,.1);
+      letter-spacing:.02em;
+    ">Rezervo Termin</div>
 
-<form id="bookingForm">
+    <form id="bookingForm">
 
-  <input
-    type="text"
-    id="name"
-    placeholder="Emri dhe Mbiemri"
-    required
-    style="width:100%;padding:14px;margin-bottom:12px;"
-  >
+      <div class="field-row">
+        <div class="field">
+          <label>Emri</label>
+          <input type="text" id="firstName" placeholder="Emri juaj" required>
+        </div>
+        <div class="field">
+          <label>Mbiemri</label>
+          <input type="text" id="lastName" placeholder="Mbiemri juaj" required>
+        </div>
+      </div>
 
-  <input
-    type="tel"
-    id="phone"
-    placeholder="Numri i telefonit"
-    required
-    style="width:100%;padding:14px;margin-bottom:12px;"
-  >
+      <div class="field-row" style="margin-top:1.75rem">
+        <div class="field">
+          <label>Telefon</label>
+          <input type="tel" id="phone" placeholder="+389 00 000 000" required>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="email@juaj.com" required>
+        </div>
+      </div>
 
-  <input
-    type="email"
-    id="email"
-    placeholder="Email"
-    required
-    style="width:100%;padding:14px;margin-bottom:12px;"
-  >
+      <div class="field" style="margin-top:1.75rem">
+        <label>Data e Takimit</label>
+        <input type="date" id="date" required>
+      </div>
 
-  <input
-    type="date"
-    id="date"
-    required
-    style="width:100%;padding:14px;margin-bottom:12px;"
-  >
+      <div class="field" style="margin-top:1.75rem">
+        <label>Orari</label>
+        <div class="time-slots" id="timeSlots"></div>
+        <input type="hidden" id="time" required>
+      </div>
 
-  <select
-    id="time"
-    required
-    style="width:100%;padding:14px;margin-bottom:20px;"
-  >
-    <option value="">Zgjidh orarin</option>
-    <option value="09:00">09:00</option>
-    <option value="10:00">10:00</option>
-    <option value="11:00">11:00</option>
-    <option value="12:00">12:00</option>
-    <option value="13:00">13:00</option>
-    <option value="14:00">14:00</option>
-    <option value="15:00">15:00</option>
-    <option value="16:00">16:00</option>
-  </select>
+      <div id="message" style="
+        margin-top:1.25rem;
+        font-size:.75rem;
+        letter-spacing:.06em;
+        color:rgba(245,242,238,.45);
+        min-height:18px;
+      "></div>
 
-  <button
-    type="submit"
-    class="btn-primary"
-    style="width:100%;justify-content:center"
-  >
-    Rezervo Tani
-  </button>
-
-</form>
-
-<div
-  id="message"
-  style="
-  margin-top:1rem;
-  color:var(--gold);
-  text-align:center;"
-></div>
-
+      <div class="form-footer" style="margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid rgba(245,242,238,.08)">
+        <span class="form-req">Të gjitha fushat janë të detyrueshme</span>
+        <button type="submit" class="submit-btn">
+          Rezervo Tani
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </button>
+      </div>
+    </form>
   </div>
-</div>
 
-
+  <div id="bookingSuccess" class="success-box" style="display:none">
+    <div class="success-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
     </div>
+    <p class="success-h">Rezervimi u regjistrua.</p>
+    <p class="success-p">Do t'ju kontaktojmë brenda 2 orëve për konfirmim.<br>Faleminderit që zgjodhët klinikën tonë.</p>
   </div>
+</div>
 </section>
 
 <!-- ═══════════════════════ FAQ ═══════════════════════ -->
@@ -2202,59 +2195,74 @@ const supabase = createClient(
   'sb_publishable_BRXsPkWLiAJq18wHAqndgw_bpQvo4Gu'
 );
 
+/* ── Build time slots ── */
+const TIMES = ['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00'];
+const slotsWrap = document.getElementById('timeSlots');
+const hiddenTime = document.getElementById('time');
+
+TIMES.forEach(t => {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'time-btn';
+  btn.textContent = t;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    hiddenTime.value = t;
+  });
+  slotsWrap.appendChild(btn);
+});
+
+/* ── Submit ── */
 document.getElementById('bookingForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const msg = document.getElementById('message');
+  const msg   = document.getElementById('message');
+  const name  = `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`;
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const date  = document.getElementById('date').value;
+  const time  = document.getElementById('time').value;
 
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const email = document.getElementById('email').value;
-  const date = document.getElementById('date').value;
-  const time = document.getElementById('time').value;
+  if (!time) {
+    msg.style.color = 'rgba(196,112,112,.8)';
+    msg.textContent = 'Ju lutem zgjidhni një orar.';
+    return;
+  }
 
-  msg.textContent = "Po kontrollohet nëse është i lirë termini…";
+  msg.style.color = 'rgba(245,242,238,.45)';
+  msg.textContent = 'Po kontrollohet nëse është i lirë termini…';
 
-  // check existing booking
   const { data: existing, error: checkError } = await supabase
     .from('appointments')
-    .select('*')
+    .select('id')
     .eq('appointment_date', date)
     .eq('appointment_time', time);
 
   if (checkError) {
-    console.error("SELECT ERROR:", checkError);
+    msg.style.color = 'rgba(196,112,112,.8)';
     msg.textContent = checkError.message;
     return;
   }
 
   if (existing.length > 0) {
-    msg.textContent = "Ky orar nuk është i disponueshëm. Ju lutem zgjidhni një datë/orë tjetër.";
+    msg.style.color = 'rgba(196,112,112,.8)';
+    msg.textContent = 'Ky orar nuk është i disponueshëm. Ju lutem zgjidhni një datë/orë tjetër.';
     return;
   }
 
-  // insert booking
   const { error } = await supabase
     .from('appointments')
-    .insert([
-      {
-        name,
-        phone,
-        email,
-        appointment_date: date,
-        appointment_time: time
-      }
-    ]);
+    .insert([{ name, phone, email, appointment_date: date, appointment_time: time }]);
 
   if (error) {
-    console.error("INSERT ERROR:", error);
+    msg.style.color = 'rgba(196,112,112,.8)';
     msg.textContent = error.message;
     return;
   }
 
-  msg.textContent = "Rezervimi u krye me sukses!";
-
-  document.getElementById('bookingForm').reset();
+  document.getElementById('bookingFormWrap').style.display = 'none';
+  document.getElementById('bookingSuccess').style.display  = 'block';
 });
 </script>
 
