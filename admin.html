@@ -116,7 +116,8 @@ async function login() {
   const password = document.getElementById("password").value;
 
   const { error } = await supabase.auth.signInWithPassword({
-    email, password
+    email,
+    password
   });
 
   if (error) {
@@ -124,8 +125,8 @@ async function login() {
     return;
   }
 
-  document.getElementById("loginBox").style.display="none";
-  document.getElementById("panel").style.display="block";
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("panel").style.display = "block";
 
   loadData();
   loadCalendar();
