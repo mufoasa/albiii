@@ -1075,12 +1075,65 @@ body::after {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
+.pp-overlay {
+  position: fixed; inset: 0;
+  background: rgba(28,28,26,0.45);
+  display: flex; align-items: flex-end; justify-content: center;
+  z-index: 9998;
+  opacity: 0; transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.pp-overlay.visible { opacity: 1; pointer-events: all; }
+.pp-banner {
+  background: var(--cream);
+  border-top: 1px solid var(--border-gold);
+  width: 100%; max-width: 640px;
+  padding: 28px 32px 32px;
+  border-radius: 16px 16px 0 0;
+  transform: translateY(20px); transition: transform 0.5s ease;
+}
+.pp-overlay.visible .pp-banner { transform: translateY(0); }
+.pp-icon {
+  width: 40px; height: 40px;
+  background: rgba(200,169,126,0.12);
+  border: 1px solid var(--border-gold);
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.pp-title { font-size: 16px; font-weight: 600; color: var(--charcoal); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px; }
+.pp-body { font-size: 14px; color: var(--stone); line-height: 1.65; margin-bottom: 24px; }
+.pp-body a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--border-gold); }
+.pp-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.btn-accept { flex: 1; min-width: 160px; background: var(--charcoal); color: var(--cream); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 24px; border: none; border-radius: 6px; cursor: pointer; }
+.btn-read { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--stone); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 20px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; }
 
 </style>
 </head>
 <body>
-
+<!-- Privacy Policy Banner -->
+<div class="pp-overlay" id="ppOverlay">
+  <div class="pp-banner" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;stroke:var(--gold)">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <div class="pp-title" id="ppTitle">Your Privacy</div>
+    <p class="pp-body">
+      We use cookies and similar technologies to provide a secure, personalised experience at Prime Dental. By continuing, you agree to our <a href="privacypolicy.html">Privacy Policy</a>. We never share your data with third parties.
+    </p>
+    <div class="pp-actions">
+      <button class="btn-accept" id="ppAccept">Accept &amp; Continue</button>
+      <a class="btn-read" href="privacypolicy.html">
+        Read policy
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
 <!-- Loading Screen -->
 <div id="loader" style="position:fixed;inset:0;z-index:9999;background:#F5F2EE;display:flex;align-items:center;justify-content:center;">
   <div class="wrap">
@@ -2199,19 +2252,29 @@ window.addEventListener('scroll', () => {
 </script>
 <script>
   window.addEventListener("load", () => {
-    setTimeout(() => {
-      const loader = document.getElementById("loader");
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if (loader) {
+      loader.style.transition = "opacity 0.6s ease";
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.remove();
+        // Show banner after loader is gone (unless already accepted)
+        if (!localStorage.getItem('pp_accepted')) {
+          document.getElementById('ppOverlay').classList.add('visible');
+        }
+      }, 600);
+    }
+  }, 4000);
+});
 
-      if (loader) {
-        loader.style.transition = "opacity 0.6s ease";
-        loader.style.opacity = "0";
-
-        setTimeout(() => {
-          loader.remove();
-        }, 600); // match fade duration
-      }
-    }, 4000); // 4 seconds
-  });
+document.getElementById('ppAccept').addEventListener('click', () => {
+  localStorage.setItem('pp_accepted', '1');
+  const overlay = document.getElementById('ppOverlay');
+  overlay.style.transition = 'opacity 0.4s ease';
+  overlay.style.opacity = '0';
+  setTimeout(() => overlay.remove(), 400);
+});
 </script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
