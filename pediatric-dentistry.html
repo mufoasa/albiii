@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stomatologji Fëmijësh — Klinika Dentare</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --cream: #F5F2EE;
+  --charcoal: #1C1C1A;
+  --gold: #C8A97E;
+  --stone: #9B9088;
+  --mist: #E8E4DF;
+  --mist-dark: #D8D3CC;
+  --border: rgba(28,28,26,0.12);
+  --border-gold: rgba(200,169,126,0.35);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: rgba(245,242,238,0.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--charcoal); }
+.logo span { color: var(--gold); }
+.back-btn {
+  font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--stone); text-decoration: none;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  transition: color 0.25s, border-color 0.25s;
+}
+.back-btn:hover { color: var(--gold); border-color: var(--border-gold); }
+
+/* ── HERO ── */
+.hero {
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100svh;
+  align-items: stretch;
+}
+.hero-text-wrap {
+  display: flex; align-items: center;
+  padding: 4rem 3rem 4rem 2.5rem;
+  border-right: 1px solid var(--border);
+}
+.hero-text { max-width: 520px; margin: auto 0; }
+
+.eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+.eyebrow-line { width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.eyebrow-text {
+  font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 500;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 4.2vw, 4rem);
+  font-weight: 400; line-height: 1.08;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+}
+h1 em { font-style: italic; color: var(--gold); display: block; }
+
+.lead {
+  font-size: 0.95rem; line-height: 1.85;
+  color: var(--stone);
+  max-width: 400px; margin-bottom: 2.5rem; font-weight: 300;
+}
+
+.pillars {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border);
+}
+.pillar {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.pillar:last-child { border-bottom: none; }
+.pillar:hover { background: var(--mist); }
+.pillar-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border: 1px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 0.9rem; margin-top: 0.1rem;
+}
+.pillar-label {
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--charcoal); margin-bottom: 0.2rem;
+}
+.pillar-desc { font-size: 0.78rem; color: var(--stone); font-weight: 300; line-height: 1.55; }
+
+/* ── VISUAL PANEL ── */
+.hero-visual {
+  background: var(--mist);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+}
+.hero-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 55%, rgba(200,169,126,0.13) 0%, transparent 65%);
+  pointer-events: none;
+}
+.visual-svg-wrap {
+  width: 100%; max-width: 420px;
+  position: relative; z-index: 1;
+}
+.visual-caption {
+  margin-top: 1.5rem; font-size: 0.7rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--stone);
+  text-align: center; position: relative; z-index: 1;
+}
+
+/* ── APPROACH SECTION ── */
+.approach-section {
+  padding: 5.5rem 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.section-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+}
+.approach-card {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.approach-card:nth-child(2n) { border-right: none; }
+.approach-card:nth-child(3),
+.approach-card:nth-child(4) { border-bottom: none; }
+.approach-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; font-weight: 400;
+  color: rgba(200,169,126,0.22); line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.approach-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 400;
+  color: var(--charcoal); margin-bottom: 0.65rem;
+}
+.approach-card p { font-size: 0.84rem; line-height: 1.75; color: var(--stone); font-weight: 300; }
+.approach-card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 2rem;
+  width: 0; height: 1.5px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+.approach-card:hover::after { width: calc(100% - 4rem); }
+
+/* ── AGE BAND ── */
+.age-band {
+  background: var(--charcoal);
+  padding: 5rem 2.5rem;
+  color: var(--cream);
+}
+.age-inner { max-width: 860px; margin: 0 auto; }
+.age-band h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400; margin-bottom: 3rem;
+  color: var(--cream);
+}
+.age-band h2 em { font-style: italic; color: var(--gold); }
+.age-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.age-item {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.age-item:last-child { border-right: none; }
+.age-range {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--gold); margin-bottom: 0.6rem; line-height: 1;
+}
+.age-label {
+  font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 1rem;
+}
+.age-item p { font-size: 0.83rem; line-height: 1.7; color: rgba(245,242,238,0.6); font-weight: 300; }
+
+/* ── REASSURANCE ── */
+.reassurance {
+  padding: 5rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.reassurance-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400; margin-bottom: 1.25rem;
+}
+.reassurance-text h2 em { font-style: italic; color: var(--gold); }
+.reassurance-text p {
+  font-size: 0.9rem; line-height: 1.85; color: var(--stone); font-weight: 300;
+  margin-bottom: 1.5rem; max-width: 400px;
+}
+.quote-block {
+  border-left: 2px solid var(--gold);
+  padding: 1.25rem 1.5rem;
+  background: var(--mist);
+  margin-top: 2rem;
+}
+.quote-block p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 1.05rem; line-height: 1.6;
+  color: var(--charcoal); margin-bottom: 0.5rem;
+}
+.quote-attr { font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--stone); }
+
+.checkmarks { display: flex; flex-direction: column; gap: 1rem; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: white;
+  transition: border-color 0.25s;
+}
+.check-item:hover { border-color: var(--border-gold); }
+.check-dot {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border-radius: 50%; background: var(--mist);
+  border: 1.5px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 0.1rem;
+}
+.check-dot::after {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--gold);
+}
+.check-text h4 { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.25rem; color: var(--charcoal); }
+.check-text p { font-size: 0.8rem; line-height: 1.6; color: var(--stone); font-weight: 300; }
+
+/* ── CTA ── */
+.cta-band {
+  padding: 5rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 2rem;
+}
+.cta-band h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 400;
+}
+.cta-band h2 em { font-style: italic; color: var(--gold); }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--charcoal); color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; font-weight: 500;
+  border: 1px solid transparent;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  white-space: nowrap;
+}
+.cta-btn:hover { background: var(--cream); color: var(--charcoal); border-color: var(--border); }
+.cta-arrow { transition: transform 0.25s; }
+.cta-btn:hover .cta-arrow { transform: translateX(4px); }
+
+/* ── SVG ANIMATIONS ── */
+@keyframes float-tooth {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes brush-stroke {
+  0%   { transform: translateX(0) rotate(-5deg); }
+  40%  { transform: translateX(22px) rotate(-2deg); }
+  80%  { transform: translateX(-8px) rotate(-7deg); }
+  100% { transform: translateX(0) rotate(-5deg); }
+}
+@keyframes sparkle-pop {
+  0%,100% { opacity: 0; transform: scale(0.5); }
+  50%     { opacity: 1; transform: scale(1); }
+}
+@keyframes foam-bubble {
+  0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-24px) scale(0.3); opacity: 0; }
+}
+@keyframes star-twinkle {
+  0%,100% { opacity: 0.15; }
+  50%     { opacity: 0.9; }
+}
+@keyframes check-draw {
+  from { stroke-dashoffset: 40; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.tooth-group { animation: float-tooth 3.2s ease-in-out infinite; transform-origin: center; }
+.brush-group { animation: brush-stroke 1.8s ease-in-out infinite; transform-origin: 50% 80%; }
+.sparkle-1 { animation: sparkle-pop 2s ease-in-out infinite 0.0s; }
+.sparkle-2 { animation: sparkle-pop 2s ease-in-out infinite 0.5s; }
+.sparkle-3 { animation: sparkle-pop 2s ease-in-out infinite 1.0s; }
+.sparkle-4 { animation: sparkle-pop 2s ease-in-out infinite 1.5s; }
+.bubble-1  { animation: foam-bubble 2.2s ease-out infinite 0.3s; }
+.bubble-2  { animation: foam-bubble 2.2s ease-out infinite 0.9s; }
+.bubble-3  { animation: foam-bubble 2.2s ease-out infinite 1.6s; }
+.star-a    { animation: star-twinkle 2.8s ease-in-out infinite 0.0s; }
+.star-b    { animation: star-twinkle 2.8s ease-in-out infinite 0.8s; }
+.star-c    { animation: star-twinkle 2.8s ease-in-out infinite 1.6s; }
+.check-path {
+  stroke-dasharray: 40;
+  animation: check-draw 0.8s ease-out 1.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooth-group, .brush-group,
+  .sparkle-1, .sparkle-2, .sparkle-3, .sparkle-4,
+  .bubble-1, .bubble-2, .bubble-3,
+  .star-a, .star-b, .star-c,
+  .check-path { animation: none; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 860px) {
+  nav { padding: 1rem 1.25rem; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+  .hero-text-wrap {
+    padding: 2.5rem 1.25rem 2rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    order: 2;
+  }
+  .hero-visual {
+    order: 1;
+    min-height: 52vw;
+    padding: 2.5rem 1.25rem;
+  }
+  .visual-svg-wrap { max-width: 300px; }
+
+  .approach-section { padding: 3.5rem 1.25rem; }
+  .approach-grid { grid-template-columns: 1fr; }
+  .approach-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .approach-card:last-child { border-bottom: none; }
+  .approach-card:nth-child(2n) { border-right: none; }
+  .approach-card:nth-child(3) { border-bottom: 1px solid var(--border); }
+
+  .age-band { padding: 3.5rem 1.25rem; }
+  .age-timeline { grid-template-columns: 1fr; }
+  .age-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 1.75rem 0;
+  }
+  .age-item:last-child { border-bottom: none; }
+
+  .reassurance {
+    grid-template-columns: 1fr;
+    padding: 3.5rem 1.25rem;
+    gap: 2.5rem;
+  }
+
+  .cta-band {
+    padding: 3.5rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta-btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: clamp(2.2rem, 9vw, 2.8rem); }
+  .hero-visual { min-height: 72vw; }
+  .visual-svg-wrap { max-width: 260px; }
+  .pillar-desc { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Prime<span>Dental</span></div>
+  <a href="index.html" class="back-btn">← Kthehu</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text-wrap">
+    <div class="hero-text">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <div class="eyebrow-text">Stomatologji Fëmijësh</div>
+      </div>
+      <h1>Fëmijë me<br><em>buzëqeshje</em><br>të shëndetshme</h1>
+      <p class="lead">Ambient i qetë, qasje e butë, mjekë që fëmijët i duan. Ndërtojmë shprehi të shëndetshme dentare që në hapat e parë.</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">◎</div>
+          <div>
+            <div class="pillar-label">Parandalim</div>
+            <div class="pillar-desc">Kontrolle rregullta dhe larje profesionale</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">◇</div>
+          <div>
+            <div class="pillar-label">Edukim</div>
+            <div class="pillar-desc">Teknika brushimi dhe zakone të shëndetshme</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">○</div>
+          <div>
+            <div class="pillar-label">Kujdes</div>
+            <div class="pillar-desc">Trajtim pa ankth në ambient miqësor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANIMATED VISUAL -->
+  <div class="hero-visual">
+    <div class="visual-svg-wrap">
+      <svg viewBox="0 0 340 360" width="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Dhëmb i gëzuar me furçë dhëmbësh">
+
+        <!-- Background stars/sparkles (ambient) -->
+        <circle class="star-a" cx="38"  cy="60"  r="3.5" fill="#C8A97E"/>
+        <circle class="star-b" cx="300" cy="45"  r="2.5" fill="#C8A97E"/>
+        <circle class="star-c" cx="310" cy="130" r="3"   fill="#C8A97E"/>
+        <circle class="star-a" cx="28"  cy="180" r="2"   fill="#D8D3CC"/>
+        <circle class="star-b" cx="315" cy="200" r="2.5" fill="#D8D3CC"/>
+
+        <!-- ── TOOTHBRUSH (animated) ── -->
+        <g class="brush-group" style="transform-origin: 198px 280px;">
+          <!-- Handle -->
+          <rect x="190" y="215" width="28" height="90" rx="10" fill="#D8D3CC"/>
+          <rect x="197" y="220" width="7" height="75" rx="4" fill="white" opacity="0.4"/>
+          <!-- Head -->
+          <rect x="184" y="185" width="40" height="36" rx="8" fill="#C8A97E"/>
+          <rect x="188" y="190" width="9"  height="22" rx="4" fill="white" opacity="0.5"/>
+          <!-- Bristles -->
+          <rect x="188" y="175" width="4" height="14" rx="2" fill="#E8E4DF"/>
+          <rect x="196" y="172" width="4" height="17" rx="2" fill="#E8E4DF"/>
+          <rect x="204" y="172" width="4" height="17" rx="2" fill="#E8E4DF"/>
+          <rect x="212" y="175" width="4" height="14" rx="2" fill="#E8E4DF"/>
+          <!-- Foam bubbles -->
+          <circle class="bubble-1" cx="196" cy="170" r="5" fill="white" opacity="0.6"/>
+          <circle class="bubble-2" cx="208" cy="166" r="3.5" fill="white" opacity="0.5"/>
+          <circle class="bubble-3" cx="202" cy="162" r="4" fill="white" opacity="0.4"/>
+        </g>
+
+        <!-- ── TOOTH CHARACTER (floating) ── -->
+        <g class="tooth-group" style="transform-origin: 155px 160px;">
+          <!-- Shadow underneath tooth -->
+          <ellipse cx="152" cy="272" rx="52" ry="9" fill="rgba(28,28,26,0.07)"/>
+
+          <!-- Tooth body -->
+          <!-- Main crown shape -->
+          <path d="M90,175 Q88,130 100,110 Q112,90 130,88 Q148,86 155,96 Q162,86 178,88 Q196,90 206,112 Q216,132 214,178 Q210,220 200,248 Q192,268 184,270 Q175,272 170,260 Q163,248 155,248 Q147,248 140,260 Q135,272 126,270 Q118,268 110,248 Q98,220 90,175 Z"
+                fill="#F5F2EE" stroke="#D8D3CC" stroke-width="1.5"/>
+
+          <!-- Tooth inner shading (left face) -->
+          <path d="M90,175 Q88,130 100,110 Q106,100 115,93 Q103,125 105,175 Q107,210 116,245 Q102,220 90,175 Z"
+                fill="rgba(200,169,126,0.08)"/>
+
+          <!-- Crown groove lines (natural tooth anatomy) -->
+          <path d="M138,140 Q155,148 172,140" stroke="#D8D3CC" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M130,158 Q155,165 180,158" stroke="#D8D3CC" stroke-width="1.0" fill="none" stroke-linecap="round"/>
+
+          <!-- Smile mouth -->
+          <path d="M136,198 Q155,215 174,198" stroke="#9B9088" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Eyes -->
+          <ellipse cx="138" cy="180" rx="7"   ry="8.5" fill="#1C1C1A"/>
+          <ellipse cx="172" cy="180" rx="7"   ry="8.5" fill="#1C1C1A"/>
+          <!-- Eye shine -->
+          <circle  cx="141" cy="177" r="2.5"  fill="white"/>
+          <circle  cx="175" cy="177" r="2.5"  fill="white"/>
+          <!-- Cheek blush -->
+          <ellipse cx="126" cy="198" rx="9"   ry="5.5" fill="rgba(200,169,126,0.28)"/>
+          <ellipse cx="184" cy="198" rx="9"   ry="5.5" fill="rgba(200,169,126,0.28)"/>
+
+          <!-- ── SPARKLE 4-point stars ── -->
+          <!-- Top left sparkle -->
+          <g class="sparkle-1" style="transform-origin: 74px 95px;">
+            <line x1="74" y1="85" x2="74" y2="105" stroke="#C8A97E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="64" y1="95" x2="84" y2="95"  stroke="#C8A97E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="67" y1="88" x2="81" y2="102" stroke="#C8A97E" stroke-width="0.8" stroke-linecap="round"/>
+            <line x1="81" y1="88" x2="67" y2="102" stroke="#C8A97E" stroke-width="0.8" stroke-linecap="round"/>
+          </g>
+          <!-- Top right sparkle -->
+          <g class="sparkle-2" style="transform-origin: 232px 88px;">
+            <line x1="232" y1="79" x2="232" y2="97" stroke="#C8A97E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="223" y1="88" x2="241" y2="88" stroke="#C8A97E" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="226" y1="81" x2="238" y2="93" stroke="#C8A97E" stroke-width="0.8" stroke-linecap="round"/>
+            <line x1="238" y1="81" x2="226" y2="93" stroke="#C8A97E" stroke-width="0.8" stroke-linecap="round"/>
+          </g>
+          <!-- Small sparkle top -->
+          <g class="sparkle-3" style="transform-origin: 155px 68px;">
+            <line x1="155" y1="62" x2="155" y2="74" stroke="#C8A97E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="149" y1="68" x2="161" y2="68" stroke="#C8A97E" stroke-width="1.2" stroke-linecap="round"/>
+          </g>
+          <!-- Right mini sparkle -->
+          <g class="sparkle-4" style="transform-origin: 248px 155px;">
+            <line x1="248" y1="149" x2="248" y2="161" stroke="#9B9088" stroke-width="1" stroke-linecap="round"/>
+            <line x1="242" y1="155" x2="254" y2="155" stroke="#9B9088" stroke-width="1" stroke-linecap="round"/>
+          </g>
+
+          <!-- Green checkmark badge (bottom right of tooth) -->
+          <circle cx="202" cy="252" r="18" fill="#F5F2EE" stroke="#D8D3CC" stroke-width="1.5"/>
+          <circle cx="202" cy="252" r="14" fill="#C8A97E"/>
+          <path class="check-path" d="M194,252 L200,258 L211,244"
+                stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+
+      </svg>
+    </div>
+    <div class="visual-caption">Parandalim · Edukim · Buzëqeshje</div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach-section">
+  <div class="section-eyebrow">
+    <div class="eyebrow-line"></div>
+    <div class="eyebrow-text">Qasja jonë</div>
+  </div>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-num">01</div>
+      <h3>Vizita e parë pa frikë</h3>
+      <p>Çdo fëmijë pritet me kohë familjarizimi — pa instrumente, pa presion. Mjeku tregon, fëmija prek dhe kupton. Frika nuk ka vend këtu.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">02</div>
+      <h3>Ambient i dizenjuar për ta</h3>
+      <p>Klinikat tona janë projektuar me ngjyra të buta, çadra të vogla dhe detaje që bëjnë fëmijën të ndihet hero, jo pacient.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">03</div>
+      <h3>Prindërit brenda dhomës</h3>
+      <p>Ndryshe nga shumë klinika, ne inkurajojmë prindërit të qëndrojnë gjatë gjithë trajtimit. Siguria e fëmijës fillon me praninë tuaj.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">04</div>
+      <h3>Çdo vizitë ka shpërblim</h3>
+      <p>Sistemi ynë i vogël shpërblimesh (diploma, stickers, surpriza) e bën fëmijën të presë me padurim vizitën tjetër dentare.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AGE-BASED CARE -->
+<section class="age-band">
+  <div class="age-inner">
+    <h2>Kujdes i <em>personalizuar</em><br>sipas moshës</h2>
+    <div class="age-timeline">
+      <div class="age-item">
+        <div class="age-range">0 — 3</div>
+        <div class="age-label">Foshnjëria</div>
+        <p>Vizita e parë në 6 muajt e parë të dhëmbit të parë. Ndërtojmë raport dhe vlerësojmë zhvillimin e nofullës.</p>
+      </div>
+      <div class="age-item">
+        <div class="age-range">4 — 11</div>
+        <div class="age-label">Fëmijëria</div>
+        <p>Larje profesionale, sigilime, fluoride dhe kontroll i rritjes se dhëmbëve të përhershëm. Parandalim i plotë.</p>
+      </div>
+      <div class="age-item">
+        <div class="age-range">12 — 17</div>
+        <div class="age-label">Adoleshenca</div>
+        <p>Vlerësim ortodontik, mbrojtës sportivë dhe trajtim i dhëmbëve të urtësisë. Tranzicion drejt kujdesit të rriturve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REASSURANCE -->
+<section class="reassurance">
+  <div class="reassurance-text">
+    <h2>Prindërit na <em>besojnë</em></h2>
+    <p>E dimë që nuk është e lehtë të çosh fëmijën te dentisti. Prandaj çdo gjë në klinikën tonë është menduar për të bërë atë eksperiencë të këndshme — jo vetëm të tolerueshme.</p>
+    <p>Mjekët tanë të specializuar në stomatologji pediatrike kanë trajnim shtesë psikologjik dhe komunikim me fëmijë. Jo çdo dentist e ka këtë.</p>
+    <div class="quote-block">
+      <p>"Djali im nuk donte të digjej fare dentistit. Pas vizitës së parë këtu, pyeste kur shkojmë sërish."</p>
+      <div class="quote-attr">— Prind, pacient 3 vjeç</div>
+    </div>
+  </div>
+
+  <div class="checkmarks">
+    <div class="check-item">
+      <div class="check-dot"></div>
+      <div class="check-text">
+        <h4>Specialistë pediatrikë të certifikuar</h4>
+        <p>Trajnim shtesë 2+ vite pas diplomës dentare, fokus ekskluziv tek fëmijët.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-dot"></div>
+      <div class="check-text">
+        <h4>Anestezi lokale e pa dhimbje</h4>
+        <p>Teknikë EMLA (krem anestetik) para injeksionit — fëmija nuk ndihet asgjë.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-dot"></div>
+      <div class="check-text">
+        <h4>Pajisje me përmasë fëmijësh</h4>
+        <p>Instrumente, karrige dhe mbrojtëse të gjitha speciale për anatomitë e vogla.</p>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-dot"></div>
+      <div class="check-text">
+        <h4>Kujtesë dixhitale e zhvillimit</h4>
+        <p>Historiku i plotë dixhital dhe fotografi krahasuese për çdo vizitë vjetore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Rezervoni vizitën<br><em>e parë sot</em></h2>
+  <a href="#" class="cta-btn">
+    Cakto Takim
+    <span class="cta-arrow">→</span>
+  </a>
+</section>
+
+</body>
+</html>

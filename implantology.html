@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Implantologji — Implante Titaniumi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F5F2EE;
+    --charcoal: #1C1C1A;
+    --gold: #C8A97E;
+    --stone: #9B9088;
+    --mist: #E8E4DF;
+    --mist-dark: #D8D3CC;
+    --border: rgba(28,28,26,0.12);
+    --border-gold: rgba(200,169,126,0.35);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ===== Top bar ===== */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:28px 0;
+  }
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px;color:var(--charcoal);
+    text-decoration:none;
+    border:1px solid var(--border);
+    padding:8px 16px;border-radius:100px;
+    transition:border-color .25s, background .25s;
+  }
+  .back-link:hover{border-color:var(--border-gold);background:var(--mist);}
+  .topbar-mark{
+    font-family:'Fraunces', serif;
+    font-weight:500;font-size:18px;letter-spacing:0.02em;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:60px 0 80px;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--stone);font-weight:500;margin-bottom:20px;
+  }
+  .hero-eyebrow::before{
+    content:'';display:inline-block;width:28px;height:1px;
+    background:var(--gold);vertical-align:middle;margin-right:12px;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--gold);
+  }
+  .hero p{
+    font-size:17px;color:#55524d;max-width:480px;margin-bottom:32px;
+  }
+  .hero-meta{
+    display:flex;gap:28px;flex-wrap:wrap;
+  }
+  .hero-meta div{
+    border-left:2px solid var(--gold);padding-left:14px;
+  }
+  .hero-meta .num{
+    font-family:'Fraunces', serif;font-size:28px;font-weight:500;
+    display:block;line-height:1;
+  }
+  .hero-meta .lab{
+    font-size:12px;color:var(--stone);margin-top:4px;
+    text-transform:uppercase;letter-spacing:0.08em;
+  }
+
+  /* Hero static tooth illustration */
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:24px;
+    background:var(--mist);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-art svg{width:72%;height:72%;}
+  .hero-art::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 70% 25%, rgba(200,169,126,0.18), transparent 60%);
+  }
+
+  /* ===== Section heads ===== */
+  .section{padding:90px 0;}
+  .section-head{
+    text-align:center;max-width:640px;margin:0 auto 64px;
+  }
+  .section-eyebrow{
+    font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;margin-bottom:14px;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif;font-weight:400;
+    font-size:clamp(30px, 4.5vw, 46px);line-height:1.15;
+  }
+  .section-head p{
+    color:#55524d;font-size:16px;margin-top:16px;
+  }
+
+  /* ===== Process / animation section ===== */
+  .process{
+    background:var(--charcoal);
+    color:var(--cream);
+    border-radius:28px;
+    padding:64px 40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .process .section-eyebrow{color:var(--gold);}
+  .process h2{
+    font-family:'Fraunces', serif;font-weight:400;
+    font-size:clamp(28px,4vw,42px);line-height:1.15;
+    margin-bottom:18px;
+  }
+  .process-intro{color:#C9C6C0;font-size:15px;margin-bottom:36px;max-width:420px;}
+
+  .stage-list{display:flex;flex-direction:column;gap:0;}
+  .stage{
+    display:flex;gap:20px;align-items:flex-start;
+    padding:18px 0;
+    border-bottom:1px solid rgba(245,242,238,0.1);
+    cursor:pointer;
+    transition:opacity .25s;
+  }
+  .stage:last-child{border-bottom:none;}
+  .stage-num{
+    font-family:'Fraunces', serif;font-size:20px;color:var(--stone);
+    min-width:32px;transition:color .25s;
+  }
+  .stage-body h3{
+    font-size:16px;font-weight:600;margin-bottom:4px;
+    transition:color .25s;
+  }
+  .stage-body p{
+    font-size:14px;color:#9B978F;margin:0;
+  }
+  .stage.active .stage-num{color:var(--gold);}
+  .stage.active .stage-body h3{color:var(--gold);}
+  .stage:not(.active){opacity:0.55;}
+  .stage:hover{opacity:1;}
+
+  /* SVG animation panel */
+  .scene-panel{
+    background:var(--mist);
+    border-radius:20px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+  .scene-frame{
+    width:100%;
+    max-width:340px;
+    aspect-ratio:1/1.05;
+    position:relative;
+  }
+  .scene-frame svg{width:100%;height:100%;display:block;}
+
+  /* progress dots */
+  .progress{
+    display:flex;gap:8px;
+  }
+  .progress span{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(28,28,26,0.18);
+    transition:background .25s, transform .25s;
+  }
+  .progress span.active{
+    background:var(--gold);
+    transform:scale(1.25);
+  }
+
+  /* SVG element transitions */
+  .layer{transition:opacity .5s ease, transform .5s ease;}
+  .fade-out{opacity:0;}
+  .drill{
+    transform-origin:120px 95px;
+  }
+  .drill.spin{animation:spin 0.7s ease-in-out infinite;}
+  @keyframes spin{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(8px) rotate(3deg);}
+  }
+  .pulse{animation:pulse 1.6s ease-in-out infinite;}
+  @keyframes pulse{
+    0%,100%{opacity:0.35;}
+    50%{opacity:0.85;}
+  }
+
+  /* ===== Why section / cards ===== */
+  .grid-3{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .card{
+    background:var(--mist);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:32px 28px;
+  }
+  .card-icon{
+    width:44px;height:44px;border-radius:12px;
+    background:var(--cream);
+    border:1px solid var(--border-gold);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .card h3{
+    font-family:'Fraunces', serif;font-weight:500;font-size:20px;margin-bottom:10px;
+  }
+  .card p{font-size:14.5px;color:#55524d;}
+
+  /* ===== Brands strip ===== */
+  .brands{
+    display:flex;justify-content:center;align-items:center;gap:64px;
+    padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+  }
+  .brand-name{
+    font-family:'Fraunces', serif;font-size:24px;color:var(--stone);
+    letter-spacing:0.02em;
+  }
+
+  /* ===== FAQ ===== */
+  .faq{max-width:720px;margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid var(--border);
+    padding:24px 0;
+  }
+  .faq-item summary{
+    font-family:'Fraunces', serif;font-size:19px;font-weight:500;
+    cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+';font-family:'Inter',sans-serif;font-size:22px;color:var(--gold);
+    transition:transform .25s;flex-shrink:0;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{
+    margin-top:14px;color:#55524d;font-size:15px;max-width:600px;
+  }
+
+  /* ===== CTA ===== */
+  .cta{
+    text-align:center;
+    border:1px solid var(--border-gold);
+    border-radius:24px;
+    padding:64px 32px;
+    background:var(--mist);
+  }
+  .cta h2{
+    font-family:'Fraunces', serif;font-weight:400;
+    font-size:clamp(28px,4.5vw,44px);margin-bottom:16px;
+  }
+  .cta p{color:#55524d;margin-bottom:32px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--charcoal);color:var(--cream);
+    padding:16px 32px;border-radius:100px;
+    font-size:15px;font-weight:500;
+    text-decoration:none;
+    border:1px solid var(--charcoal);
+    transition:background .25s, color .25s;
+  }
+  .btn:hover{background:transparent;color:var(--charcoal);}
+
+  /* ===== Footer ===== */
+  footer{
+    padding:40px 0 60px;text-align:center;
+    color:var(--stone);font-size:13px;
+  }
+
+  /* ===== Reveal on scroll ===== */
+  .reveal{
+    opacity:0;transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 880px){
+    .hero{grid-template-columns:1fr;gap:40px;padding:40px 0 60px;}
+    .hero-art{max-width:340px;margin:0 auto;width:100%;}
+    .process{grid-template-columns:1fr;padding:40px 24px;border-radius:20px;}
+    .grid-3{grid-template-columns:1fr;}
+    .section{padding:60px 0;}
+    .brands{gap:36px;}
+    .hero-meta{gap:20px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none;opacity:1;transform:none;}
+    .drill.spin{animation:none;}
+    .pulse{animation:none;}
+    .layer{transition:none;}
+  }
+  .brands {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 120px;   /* adjust as needed */
+  height: auto;
+  object-fit: contain;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== Topbar ===== -->
+  <header class="topbar">
+    <span class="topbar-mark">Prime Dental</span>
+    <a href="index.html" class="back-link">← Kthehu te shërbimet</a>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="reveal">
+      <div class="hero-eyebrow">Shërbimi 01 — Implantologji</div>
+      <h1>Implante titaniumi që <em>zëvendësojnë</em>, jo që dallohen.</h1>
+      <p>
+        Rikthejmë dhëmbët e munguar me implante titaniumi me jetëgjatësi të
+        garantuar. Procedurë minimalisht invazive, planifikim digjital dhe
+        rezultat që ndihet dhe duket natyral.
+      </p>
+      <div class="hero-meta">
+        <div>
+          <span class="num">98%</span>
+          <span class="lab">Shkallë suksesi</span>
+        </div>
+        <div>
+          <span class="num">20+</span>
+          <span class="lab">Vite jetëgjatësi</span>
+        </div>
+        <div>
+          <span class="num">1 seancë</span>
+          <span class="lab">Vendosja e implantit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- bone -->
+        <rect x="40" y="140" width="160" height="80" rx="12" fill="none" stroke="var(--charcoal)" stroke-opacity="0.12" stroke-width="2"/>
+        <!-- gum tissue -->
+        <path d="M30 140 Q120 105 210 140 L210 165 Q120 130 30 165 Z" fill="var(--gold)" opacity="0.22"/>
+        <path d="M30 140 Q120 105 210 140" stroke="var(--gold)" stroke-width="2" fill="none"/>
+        <!-- crown -->
+        <path d="M95 45 Q120 30 145 45 L150 105 Q120 120 90 105 Z" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="2"/>
+        <path d="M97 51 Q120 38 143 51" stroke="var(--border-gold)" stroke-width="1.5" fill="none"/>
+        <!-- abutment -->
+        <rect x="108" y="105" width="24" height="22" fill="var(--gold)" opacity="0.9"/>
+        <!-- implant screw -->
+        <rect x="105" y="127" width="30" height="68" rx="4" fill="var(--charcoal)"/>
+        <g stroke="var(--cream)" stroke-width="2" opacity="0.5">
+          <line x1="105" y1="139" x2="135" y2="139"/>
+          <line x1="105" y1="150" x2="135" y2="150"/>
+          <line x1="105" y1="161" x2="135" y2="161"/>
+          <line x1="105" y1="172" x2="135" y2="172"/>
+          <line x1="105" y1="183" x2="135" y2="183"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== Process / Animation section ===== -->
+  <section class="section">
+    <div class="process reveal">
+
+      <div>
+        <div class="section-eyebrow">Si funksionon</div>
+        <h2>Katër hapa, një rezultat i qëndrueshëm.</h2>
+        <p class="process-intro">
+          Çdo implant ndjek të njëjtin proces të saktë — nga vlerësimi i
+          eshtit te buzëqeshja finale. Klikoni një hap për t'a parë në animacion.
+        </p>
+
+        <div class="stage-list" id="stageList">
+          <div class="stage active" data-stage="0">
+            <span class="stage-num">01</span>
+            <div class="stage-body">
+              <h3>Vlerësimi & planifikimi</h3>
+              <p>Skanim 3D i nofullës për të përcaktuar pozicionin ideal të implantit.</p>
+            </div>
+          </div>
+          <div class="stage" data-stage="1">
+            <span class="stage-num">02</span>
+            <div class="stage-body">
+              <h3>Vendosja e implantit</h3>
+              <p>Vidha e titaniumit futet me precizion në eshtin, minimalisht invazive.</p>
+            </div>
+          </div>
+          <div class="stage" data-stage="2">
+            <span class="stage-num">03</span>
+            <div class="stage-body">
+              <h3>Osteointegrimi</h3>
+              <p>Eshti bashkohet natyrshëm me titaniumin, duke krijuar bazën e fortë.</p>
+            </div>
+          </div>
+          <div class="stage" data-stage="3">
+            <span class="stage-num">04</span>
+            <div class="stage-body">
+              <h3>Abatmenti & korona</h3>
+              <p>Vendoset korona finale — funksionale, estetike, e qëndrueshme.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene panel -->
+      <div class="scene-panel">
+        <div class="scene-frame">
+          <svg id="implantSvg" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animacion i procedurës së implantit dentar">
+
+            <!-- Gum / cross-section -->
+            <path class="layer" d="M20 150 Q120 120 220 150 L220 230 Q120 255 20 230 Z" fill="var(--mist-dark)" stroke="var(--border)" />
+            <!-- Gum top tissue -->
+            <path class="layer" d="M20 150 Q120 120 220 150 L220 168 Q120 138 20 168 Z" fill="var(--gold)" opacity="0.28"/>
+
+            <!-- Adjacent natural teeth (context) -->
+            <g class="layer" opacity="0.9">
+              <path d="M45 90 Q60 75 75 90 L72 150 Q60 162 48 150 Z" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5"/>
+              <path d="M165 90 Q180 75 195 90 L192 150 Q180 162 168 150 Z" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5"/>
+            </g>
+
+            <!-- STAGE 0: drill / osteotomy site -->
+            <g id="stage0">
+              <ellipse class="layer" cx="120" cy="155" rx="18" ry="6" fill="var(--charcoal)" opacity="0.12"/>
+              <g class="layer drill" id="drillBit">
+                <rect x="113" y="60" width="14" height="70" rx="3" fill="var(--charcoal)"/>
+                <g stroke="var(--cream)" stroke-width="2" opacity="0.55">
+                  <line x1="113" y1="74" x2="127" y2="74"/>
+                  <line x1="113" y1="86" x2="127" y2="86"/>
+                  <line x1="113" y1="98" x2="127" y2="98"/>
+                  <line x1="113" y1="110" x2="127" y2="110"/>
+                  <line x1="113" y1="122" x2="127" y2="122"/>
+                </g>
+                <rect x="106" y="38" width="28" height="24" rx="4" fill="var(--gold)"/>
+              </g>
+              <!-- bone dust particles -->
+              <g class="layer pulse" id="dust" opacity="0.7">
+                <circle cx="100" cy="148" r="2" fill="var(--gold)"/>
+                <circle cx="140" cy="152" r="1.6" fill="var(--gold)"/>
+                <circle cx="112" cy="158" r="1.4" fill="var(--gold)"/>
+                <circle cx="130" cy="160" r="1.8" fill="var(--gold)"/>
+              </g>
+            </g>
+
+            <!-- STAGE 1: implant screw descending -->
+            <g id="stage1" class="layer fade-out">
+              <rect x="105" y="150" width="30" height="68" rx="4" fill="var(--charcoal)" id="screwBody"/>
+              <g stroke="var(--cream)" stroke-width="2" opacity="0.55">
+                <line x1="105" y1="163" x2="135" y2="163"/>
+                <line x1="105" y1="174" x2="135" y2="174"/>
+                <line x1="105" y1="185" x2="135" y2="185"/>
+                <line x1="105" y1="196" x2="135" y2="196"/>
+                <line x1="105" y1="207" x2="135" y2="207"/>
+              </g>
+            </g>
+
+            <!-- STAGE 2: osteointegration glow around implant -->
+            <g id="stage2" class="layer fade-out">
+              <rect x="101" y="146" width="38" height="76" rx="6" fill="none" stroke="var(--gold)" stroke-width="2" opacity="0.5"/>
+              <g class="pulse" opacity="0.6">
+                <circle cx="98" cy="170" r="3" fill="var(--gold)"/>
+                <circle cx="142" cy="185" r="3" fill="var(--gold)"/>
+                <circle cx="96" cy="200" r="2.4" fill="var(--gold)"/>
+                <circle cx="144" cy="205" r="2.4" fill="var(--gold)"/>
+              </g>
+            </g>
+
+            <!-- STAGE 3: abutment + crown -->
+            <g id="stage3" class="layer fade-out">
+              <rect x="108" y="128" width="24" height="22" fill="var(--gold)"/>
+              <path d="M95 78 Q120 60 145 78 L150 128 Q120 145 90 128 Z" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5"/>
+              <path d="M97 84 Q120 70 143 84" stroke="var(--border-gold)" stroke-width="1.5" fill="none"/>
+            </g>
+
+            <!-- Always-on implant body (stage 1+) -->
+            <g id="implantPersistent" class="layer fade-out">
+              <rect x="105" y="150" width="30" height="68" rx="4" fill="var(--charcoal)"/>
+              <g stroke="var(--cream)" stroke-width="2" opacity="0.55">
+                <line x1="105" y1="163" x2="135" y2="163"/>
+                <line x1="105" y1="174" x2="135" y2="174"/>
+                <line x1="105" y1="185" x2="135" y2="185"/>
+                <line x1="105" y1="196" x2="135" y2="196"/>
+                <line x1="105" y1="207" x2="135" y2="207"/>
+              </g>
+            </g>
+
+          </svg>
+        </div>
+
+        <div class="progress" id="progressDots">
+          <span class="active" data-dot="0"></span>
+          <span data-dot="1"></span>
+          <span data-dot="2"></span>
+          <span data-dot="3"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Why section ===== -->
+  <section class="section">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Përfitimet</div>
+      <h2>Pse të zgjidhni implantin?</h2>
+      <p>Një zgjidhje permanente që mbron eshtin e nofullës dhe ju kthen besimin për të qeshur lirshëm.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="1.6"><path d="M12 2 L20 7 V17 L12 22 L4 17 V7 Z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Material biokompatibël</h3>
+        <p>Titaniumi i pastër bashkohet natyrshëm me eshtin, pa rrezik refuzimi nga organizmi.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="1.6"><path d="M3 12 Q7 4 12 12 Q17 20 21 12"/></svg>
+        </div>
+        <h3>Mbron eshtin e nofullës</h3>
+        <p>Ndryshe nga urat dentare, implanti parandalon humbjen e dendësisë së eshtit me kohë.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="1.6"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>Zgjat me vite</h3>
+        <p>Me kujdes të rregullt, implantet titaniumi mund të zgjasin më shumë se 20 vjet.</p>
+      </div>
+    </div>
+  </section>
+
+ <!-- ===== Brands ===== -->
+<div class="brands reveal">
+
+  <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Straumann_Logo.svg/3840px-Straumann_Logo.svg.png" alt="Straumann">
+
+  <img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/NB-Wikipedia-logo-744x248.png" alt="Nobel Biocare">
+
+</div>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Pyetje të shpeshta</div>
+      <h2>Çdo gjë që duhet të dini.</h2>
+    </div>
+
+    <div class="faq reveal">
+      <details class="faq-item" open>
+        <summary>A është procedura e dhimbshme?</summary>
+        <p>Procedura kryhet me anestezi lokale, kështu që pacienti nuk ndjen dhimbje gjatë vendosjes. Mund të ketë ndjeshmëri të lehtë në ditët pasuese, e menaxhueshme me ilaçe të zakonshme.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Sa zgjat e gjithë trajtimi?</summary>
+        <p>Vendosja e implantit zgjat rreth 30-60 minuta. Osteointegrimi i plotë merr 2-4 muaj, pas të cilit vendoset korona finale.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A jam kandidat i mirë për implant?</summary>
+        <p>Shumica e të rriturve me eshtra të shëndetshëm janë kandidatë të mirë. Gjatë konsultës fillestare bëhet vlerësimi me skanim 3D për të konfirmuar përshtatshmërinë.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Çfarë diference ka mes Straumann dhe Nobel Biocare?</summary>
+        <p>Të dyja janë marka udhëheqëse globale me standarde të larta cilësie. Zgjedhja varet nga anatomia specifike e pacientit dhe rekomandimi i specialistit pas vlerësimit.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section">
+    <div class="cta reveal">
+      <h2>Gati për buzëqeshjen tuaj të re?</h2>
+      <p>Rezervoni një konsultë falas dhe merrni planin tuaj personal të trajtimit.</p>
+      <a href="#" class="btn">Rezervo konsultë →</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Prime Dental — Implantologji me Straumann & Nobel Biocare
+  </footer>
+
+</div>
+
+<script>
+  // ===== Reveal on scroll =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ===== Implant stage animation =====
+  const stages = document.querySelectorAll('.stage');
+  const dots = document.querySelectorAll('#progressDots span');
+  const stage0 = document.getElementById('stage0');
+  const stage1 = document.getElementById('stage1');
+  const stage2 = document.getElementById('stage2');
+  const stage3 = document.getElementById('stage3');
+  const implantPersistent = document.getElementById('implantPersistent');
+  const drillBit = document.getElementById('drillBit');
+
+  let current = 0;
+  let autoTimer = null;
+
+  function showStage(idx){
+    current = idx;
+
+    stages.forEach((s,i) => s.classList.toggle('active', i === idx));
+    dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+
+    // stage 0: drilling visible
+    stage0.classList.toggle('fade-out', idx !== 0);
+    drillBit.classList.toggle('spin', idx === 0);
+
+    // implant body persistent from stage 1 onward
+    implantPersistent.classList.toggle('fade-out', idx < 1);
+
+    // stage1 highlight (descending screw emphasis) only on stage 1
+    stage1.classList.toggle('fade-out', idx !== 1);
+
+    // osteointegration glow only stage 2
+    stage2.classList.toggle('fade-out', idx !== 2);
+
+    // crown/abutment from stage 3
+    stage3.classList.toggle('fade-out', idx !== 3);
+  }
+
+  function nextStage(){
+    showStage((current + 1) % stages.length);
+  }
+
+  function startAuto(){
+    stopAuto();
+    autoTimer = setInterval(nextStage, 3200);
+  }
+  function stopAuto(){
+    if(autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  stages.forEach((s) => {
+    s.addEventListener('click', () => {
+      stopAuto();
+      showStage(parseInt(s.dataset.stage, 10));
+    });
+  });
+
+  showStage(0);
+  startAuto();
+</script>
+
+</body>
+</html>

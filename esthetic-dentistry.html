@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estetikë Dentare — Veneers, Zbardhim &amp; Kompozite</title>
+<meta name="description" content="Veneers porcelani, zbardhim profesional dhe kompozite estetike. Zbuloni si funksionon procesi i transformimit të buzëqeshjes, hap pas hapi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F5F2EE;
+    --charcoal: #1C1C1A;
+    --gold: #C8A97E;
+    --stone: #9B9088;
+    --mist: #E8E4DF;
+    --mist-dark: #D8D3CC;
+    --border: rgba(28,28,26,0.12);
+    --border-gold: rgba(200,169,126,0.35);
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --max: 1240px;
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
+
+  *, *::before, *::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color: inherit; }
+  ::selection{ background: var(--gold); color: var(--cream); }
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ================= HEADER ================= */
+  .site-header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(245,242,238,0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .back-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--charcoal);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .back-link .back-arrow{
+    transition: transform .3s var(--ease);
+  }
+  .back-link:hover .back-arrow{ transform: translateX(-4px); }
+
+  .header-mark{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--stone);
+  }
+
+  .nav-cta{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 12px 22px;
+    border: 1px solid var(--charcoal);
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--charcoal);
+    transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+    white-space: nowrap;
+  }
+  .nav-cta:hover{ background: var(--charcoal); color: var(--cream); }
+
+  @media (max-width: 720px){
+    .header-mark{ display:none; }
+    .header-inner{ padding: 16px 24px; }
+  }
+
+  /* ================= GENERIC ================= */
+  .container{ max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+  .section-eyebrow{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+  .section-title{
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-title em{ font-style: italic; color: var(--gold); font-weight: 400; }
+  .section-sub{
+    margin: 20px 0 0;
+    color: var(--stone);
+    font-size: 1.0625rem;
+    max-width: 520px;
+  }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: 2px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);
+    cursor: pointer;
+  }
+  .btn-primary{ background: var(--charcoal); color: var(--cream); }
+  .btn-primary:hover{ background: var(--gold); color: var(--charcoal); }
+  .btn-ghost{ border-color: var(--border); color: var(--charcoal); background: transparent; }
+  .btn-ghost:hover{ border-color: var(--gold); background: var(--mist); }
+  .btn-arr{ transition: transform .35s var(--ease); display:inline-block; }
+  .btn-ghost:hover .btn-arr{ transform: translateY(3px); }
+
+  /* reveal-on-scroll utility */
+  .reveal{
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in-view{ opacity: 1; transform: translateY(0); }
+  .reveal-d1{ transition-delay: .08s; }
+  .reveal-d2{ transition-delay: .16s; }
+  .reveal-d3{ transition-delay: .24s; }
+  .reveal-d4{ transition-delay: .32s; }
+
+  /* ================= HERO ================= */
+  .hero{
+    position: relative;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 90px 40px 70px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 60px;
+    overflow: hidden;
+  }
+  .hero-watermark{
+    position: absolute;
+    top: -4.5rem;
+    right: -1rem;
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 22vw, 18rem);
+    color: var(--charcoal);
+    opacity: 0.035;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .hero-text{ position: relative; z-index: 1; }
+  .hero-eyebrow{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .eyebrow-num{
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--gold);
+    border: 1px solid var(--border-gold);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .eyebrow-line{ height: 1px; width: 48px; background: var(--border-gold); }
+  .eyebrow-text{
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--stone);
+  }
+  .hero-title{
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3rem, 6.6vw, 5.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 28px;
+  }
+  .hero-title em{ font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-desc{
+    font-size: 1.125rem;
+    color: var(--charcoal);
+    opacity: 0.78;
+    max-width: 460px;
+    margin: 0 0 32px;
+  }
+  .hero-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .hero-tag{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    color: var(--stone);
+  }
+  .hero-actions{ display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* hero visual */
+  .hero-visual{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  .hero-glow{
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,169,126,0.16), transparent 70%);
+    z-index: 0;
+  }
+  .hero-tooth{
+    width: min(340px, 80%);
+    position: relative;
+    z-index: 1;
+    animation: float 7s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .hero-base{ fill: var(--mist-dark); stroke: var(--charcoal); stroke-width: 3; }
+  .hero-surface{ fill: var(--mist); }
+  .hero-outline{ fill: none; stroke: var(--border-gold); stroke-width: 1.5; stroke-dasharray: 6 6; }
+  .hero-shine{ fill: var(--gold); opacity: 0.32; }
+
+  @keyframes float{
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(-1.5deg); }
+  }
+
+  @media (max-width: 900px){
+    .hero{ grid-template-columns: 1fr; padding-top: 56px; gap: 36px; text-align: left; }
+    .hero-visual{ order: -1; }
+    .hero-tooth{ width: 220px; }
+    .hero-glow{ width: 300px; height: 300px; }
+    .hero-watermark{ display: none; }
+  }
+  @media (max-width: 560px){
+    .hero{ padding-left: 24px; padding-right: 24px; }
+    .hero-actions{ flex-direction: column; align-items: stretch; }
+    .btn{ justify-content: center; }
+  }
+
+  /* ================= PROCESS / HOW IT WORKS ================= */
+  .process{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 60px 40px 140px;
+  }
+  .process-head{ max-width: 640px; margin-bottom: 70px; }
+
+  .process-grid{
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .process-visual{
+    position: sticky;
+    top: 110px;
+  }
+
+  .tooth-visual-box{
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3 / 3.4;
+    padding: 36px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--mist);
+    margin: 0 auto;
+  }
+  .tooth-svg{ width: 100%; height: 100%; display: block; }
+
+  /* step track under visual */
+  .stage-track{ max-width: 420px; margin: 28px auto 0; }
+  .stage-line{
+    position: relative;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 18px;
+  }
+  .stage-line-fill{
+    position: absolute;
+    top: 0; left: 0;
+    height: 1px;
+    width: 25%;
+    background: var(--gold);
+    transition: width .5s var(--ease);
+  }
+  .stage-dots{
+    display: flex;
+    justify-content: space-between;
+  }
+  .stage-dot{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+    transition: color .4s var(--ease);
+  }
+  .stage-dot.active{ color: var(--gold); }
+  .stage-caption{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+    margin-top: 16px;
+    min-height: 1.4em;
+    transition: opacity .3s var(--ease);
+  }
+
+  /* steps list */
+  .process-steps{ display: flex; flex-direction: column; }
+  .step{
+    border-top: 1px solid var(--border);
+    padding: 64px 0;
+    display: flex;
+    gap: 28px;
+    min-height: 62vh;
+    align-items: center;
+  }
+  .step:first-child{ border-top: none; }
+  .step-num{
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--stone);
+    padding-top: 6px;
+    flex-shrink: 0;
+    transition: color .5s var(--ease);
+  }
+  .step.is-active .step-num{ color: var(--gold); }
+  .step-content h3{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    margin: 0 0 14px;
+    color: var(--stone);
+    transition: color .5s var(--ease);
+  }
+  .step.is-active .step-content h3{ color: var(--charcoal); }
+  .step-content p{
+    margin: 0;
+    color: var(--stone);
+    font-size: 1rem;
+    max-width: 460px;
+    transition: opacity .5s var(--ease);
+    opacity: 0.65;
+  }
+  .step.is-active .step-content p{ opacity: 1; }
+
+  @media (max-width: 900px){
+    .process{ padding-top: 40px; padding-bottom: 100px; }
+    .process-grid{ grid-template-columns: 1fr; gap: 50px; }
+    .process-visual{ position: static; top: auto; }
+    .tooth-visual-box{ max-width: 320px; aspect-ratio: 3/3.2; }
+    .stage-track{ max-width: 320px; }
+    .step{ min-height: auto; padding: 40px 0; }
+  }
+
+  /* ---- SVG animation states ---- */
+  .tooth-core{ fill: var(--mist-dark); stroke: var(--charcoal); stroke-width: 3; transition: fill .6s var(--ease); }
+
+  .enamel-before, .chip-cutout{
+    transform-origin: 120px 150px;
+    transition: opacity .6s var(--ease), transform .6s var(--ease);
+  }
+  .enamel-before{ fill: var(--stone); }
+  .chip-cutout{ fill: var(--cream); }
+
+  .veneer-shell{
+    fill: #FFFFFF;
+    stroke: var(--gold);
+    stroke-width: 2;
+    opacity: 0;
+    transform-origin: 120px 150px;
+    transform: translate(72px,-16px) rotate(16deg) scale(0.85);
+    transition: transform .9s var(--ease), opacity .5s var(--ease);
+  }
+
+  .g-blueprint{
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2;
+    stroke-dasharray: 8 6;
+    opacity: 0;
+    transition: opacity .4s var(--ease);
+  }
+
+  .g-scan{ opacity: 0; transition: opacity .4s var(--ease); }
+  .g-scan line{ stroke: var(--stone); stroke-width: 1; stroke-dasharray: 2 5; }
+  .scan-bar{ fill: var(--gold); }
+
+  .g-glow{ opacity: 0; transition: opacity .6s var(--ease); }
+  .glow-ring{ fill: url(#glowGrad); transform-origin: 120px 140px; }
+  .sparkle{ fill: var(--gold); opacity: 0; transform-origin: center; transform: scale(0.4); }
+
+  @keyframes scanSweep{
+    0%, 100% { transform: translateY(0); opacity: .9; }
+    50% { transform: translateY(255px); opacity: .45; }
+  }
+  @keyframes dashMove{ to { stroke-dashoffset: -140; } }
+  @keyframes glowPulse{
+    0% { opacity: 0; transform: scale(0.85); }
+    50% { opacity: 0.7; }
+    100% { opacity: 0; transform: scale(1.15); }
+  }
+  @keyframes sparklePop{
+    0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(18deg); }
+  }
+
+  /* stage 1 — analysis */
+  .tooth-visual-box.is-1 .g-scan{ opacity: 1; }
+  .tooth-visual-box.is-1 .scan-bar{ animation: scanSweep 2.6s ease-in-out infinite; }
+
+  /* stage 2 — digital design */
+  .tooth-visual-box.is-2 .g-blueprint{ opacity: 1; animation: dashMove 6s linear infinite; }
+
+  /* stage 3 — preparation */
+  .tooth-visual-box.is-3 .enamel-before,
+  .tooth-visual-box.is-3 .chip-cutout{ transform: scale(0.96); opacity: 0.65; }
+  .tooth-visual-box.is-3 .veneer-shell{ opacity: 1; transform: translate(34px,-6px) rotate(9deg) scale(0.93); }
+
+  /* stage 4 — placement & result */
+  .tooth-visual-box.is-4 .enamel-before,
+  .tooth-visual-box.is-4 .chip-cutout{ opacity: 0; transform: scale(0.9); }
+  .tooth-visual-box.is-4 .veneer-shell{ opacity: 1; transform: translate(0,0) rotate(0deg) scale(1); }
+  .tooth-visual-box.is-4 .g-glow{ opacity: 1; }
+  .tooth-visual-box.is-4 .glow-ring-1{ animation: glowPulse 2.4s ease-out infinite; }
+  .tooth-visual-box.is-4 .glow-ring-2{ animation: glowPulse 2.4s ease-out infinite .5s; }
+  .tooth-visual-box.is-4 .sparkle-1{ animation: sparklePop 2s ease-in-out infinite; }
+  .tooth-visual-box.is-4 .sparkle-2{ animation: sparklePop 2s ease-in-out infinite .7s; }
+
+  /* ================= TREATMENTS ================= */
+  .treatments{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 40px 140px;
+  }
+  .treatments-head{ max-width: 640px; margin-bottom: 56px; }
+  .treatments-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .treatment-card{
+    background: var(--mist);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 40px 32px;
+    transition: border-color .35s var(--ease), transform .35s var(--ease);
+  }
+  .treatment-card:hover{ border-color: var(--border-gold); transform: translateY(-5px); }
+  .treatment-num{
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .treatment-card h3{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.45rem;
+    margin: 18px 0 12px;
+  }
+  .treatment-card p{
+    color: var(--stone);
+    font-size: 0.9375rem;
+    margin: 0 0 24px;
+  }
+  .treatment-meta{
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .treatment-meta span{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+  }
+  @media (max-width: 900px){
+    .treatments-grid{ grid-template-columns: 1fr; }
+    .treatments{ padding-left: 24px; padding-right: 24px; }
+  }
+
+  /* ================= CTA ================= */
+  .cta{
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 120px 40px;
+    text-align: center;
+  }
+  .cta-inner{ max-width: 640px; margin: 0 auto; }
+  .cta .section-eyebrow{ color: var(--gold); }
+  .cta h2{
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.15;
+    margin: 0 0 20px;
+  }
+  .cta h2 em{ font-style: italic; color: var(--gold); }
+  .cta p{
+    color: var(--mist-dark);
+    font-size: 1.0625rem;
+    margin: 0 0 40px;
+  }
+  .cta .btn-primary{ background: var(--gold); color: var(--charcoal); }
+  .cta .btn-primary:hover{ background: var(--cream); color: var(--charcoal); }
+  @media (max-width: 560px){
+    .cta{ padding: 90px 24px; }
+  }
+
+  /* ================= FOOTER ================= */
+  .site-footer{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 40px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: var(--stone);
+  }
+  .site-footer a{
+    text-decoration: none;
+    color: var(--charcoal);
+    font-weight: 500;
+    transition: color .3s var(--ease);
+  }
+  .site-footer a:hover{ color: var(--gold); }
+  @media (max-width: 560px){
+    .site-footer{ padding: 32px 24px; justify-content: center; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html#sherbimet" class="back-link"><span class="back-arrow">←</span> Shërbimet</a>
+    <span class="header-mark">03 — Estetikë Dentare</span>
+    <a href="#booking" class="nav-cta">Rezervo Vizitë</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <span class="hero-watermark" aria-hidden="true">03</span>
+    <div class="hero-text">
+      <div class="hero-eyebrow reveal">
+        <span class="eyebrow-num">03</span>
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Shërbimi</span>
+      </div>
+      <h1 class="hero-title reveal reveal-d1">Estetikë <em>Dentare</em></h1>
+      <p class="hero-desc reveal reveal-d2">
+        Veneers porcelani, zbardhim profesional dhe kompozite estetike — çdo trajtim hartohet
+        me precizion për të nxjerrë në pah buzëqeshjen tuaj natyrale.
+      </p>
+      <div class="hero-tags reveal reveal-d2">
+        <span class="hero-tag">Zbardhim</span>
+        <span class="hero-tag">Veneers</span>
+        <span class="hero-tag">Kompozite</span>
+      </div>
+      <div class="hero-actions reveal reveal-d3">
+        <a href="#booking" class="btn btn-primary">Rezervo Konsultim</a>
+        <a href="#how-it-works" class="btn btn-ghost">Si funksionon <span class="btn-arr">↓</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal reveal-d2">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <svg class="hero-tooth" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path class="hero-base" d="M60,30 C60,16 76,10 120,10 C164,10 180,16 180,30 L173,220 C170,256 150,276 120,280 C90,276 70,256 67,220 Z"/>
+        <path class="hero-surface" d="M70,40 C70,28 84,24 120,24 C156,24 170,28 170,40 L165,215 C162,250 144,268 120,272 C96,268 78,250 75,215 Z"/>
+        <path class="hero-outline" d="M52,22 C52,8 70,2 120,2 C170,2 188,8 188,22 L182,225 C178,265 152,286 120,290 C88,286 62,265 58,225 Z"/>
+        <path class="hero-shine" d="M86,52 C100,46 116,48 126,56 L104,92 L82,82 Z"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="process" id="how-it-works">
+    <div class="process-head">
+      <span class="section-eyebrow reveal">Procesi</span>
+      <h2 class="section-title reveal reveal-d1">Si funksionon <em>trajtimi</em></h2>
+      <p class="section-sub reveal reveal-d2">Katër hapa, nga vlerësimi i parë deri te momenti kur shihni buzëqeshjen tuaj të re. Lëvizni poshtë për të ndjekur procesin.</p>
+    </div>
+
+    <div class="process-grid">
+
+      <!-- sticky animated visual -->
+      <div class="process-visual">
+        <div class="tooth-visual-box is-1" id="toothVisual">
+          <svg class="tooth-svg" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#C8A97E" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#C8A97E" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <!-- stage 4: ambient glow -->
+            <g class="g-glow">
+              <circle class="glow-ring glow-ring-1" cx="120" cy="140" r="90"/>
+              <circle class="glow-ring glow-ring-2" cx="120" cy="140" r="130"/>
+              <path class="sparkle sparkle-1" d="M40,60 L46,76 L62,82 L46,88 L40,104 L34,88 L18,82 L34,76 Z"/>
+              <path class="sparkle sparkle-2" d="M204,196 L208,208 L220,212 L208,216 L204,228 L200,216 L188,212 L200,208 Z"/>
+            </g>
+
+            <!-- base tooth -->
+            <path class="tooth-core" d="M60,30 C60,16 76,10 120,10 C164,10 180,16 180,30 L173,220 C170,256 150,276 120,280 C90,276 70,256 67,220 Z"/>
+
+            <!-- stage 1-3: current ("before") surface with chip -->
+            <path class="enamel-before" d="M70,40 C70,28 84,24 120,24 C156,24 170,28 170,40 L165,215 C162,250 144,268 120,272 C96,268 78,250 75,215 Z"/>
+            <path class="chip-cutout" d="M150,235 L168,225 L172,248 L155,258 Z"/>
+
+            <!-- stage 2: digital design overlay -->
+            <path class="g-blueprint" d="M52,22 C52,8 70,2 120,2 C170,2 188,8 188,22 L182,225 C178,265 152,286 120,290 C88,286 62,265 58,225 Z"/>
+
+            <!-- stage 1: scan -->
+            <g class="g-scan">
+              <line x1="42" y1="0" x2="42" y2="296"/>
+              <line x1="198" y1="0" x2="198" y2="296"/>
+              <rect class="scan-bar" x="40" y="10" width="160" height="3"/>
+            </g>
+
+            <!-- stage 3-4: veneer shell -->
+            <path class="veneer-shell" d="M70,40 C70,28 84,24 120,24 C156,24 170,28 170,40 L165,215 C162,250 144,268 120,272 C96,268 78,250 75,215 Z"/>
+          </svg>
+        </div>
+
+        <div class="stage-track">
+          <div class="stage-line"><div class="stage-line-fill" id="stageLineFill"></div></div>
+          <div class="stage-dots" id="stageDots">
+            <span class="stage-dot active" data-n="1">01</span>
+            <span class="stage-dot" data-n="2">02</span>
+            <span class="stage-dot" data-n="3">03</span>
+            <span class="stage-dot" data-n="4">04</span>
+          </div>
+          <div class="stage-caption" id="stageCaption">01 — Konsultimi &amp; Analiza</div>
+        </div>
+      </div>
+
+      <!-- steps -->
+      <div class="process-steps">
+        <div class="step is-active" data-step="1" data-short="Konsultimi &amp; Analiza">
+          <span class="step-num">01</span>
+          <div class="step-content">
+            <h3>Konsultimi &amp; Analiza</h3>
+            <p>Fillojmë me një ekzaminim të plotë dhe fotografi dixhitale të buzëqeshjes suaj. Diskutojmë objektivat tuaja estetike dhe vlerësojmë ngjyrën, formën dhe pozicionimin natyror të dhëmbëve.</p>
+          </div>
+        </div>
+        <div class="step" data-step="2" data-short="Dizajnimi Digjital">
+          <span class="step-num">02</span>
+          <div class="step-content">
+            <h3>Dizajnimi Digjital i Buzëqeshjes</h3>
+            <p>Përpara se të prekim asnjë dhëmb, krijojmë një paraqitje dixhitale të rezultatit final. Ju shihni dhe miratoni formën, gjatësinë dhe nuancën e bardhësisë së buzëqeshjes tuaj të re.</p>
+          </div>
+        </div>
+        <div class="step" data-step="3" data-short="Përgatitja e Sipërfaqes">
+          <span class="step-num">03</span>
+          <div class="step-content">
+            <h3>Përgatitja e Sipërfaqes</h3>
+            <p>Për veneers, hiqet një shtresë minimale smalti — vetëm aq sa nevojitet për t'i lënë vend veneers-it të personalizuar, pa cenuar strukturën natyrale të dhëmbit.</p>
+          </div>
+        </div>
+        <div class="step" data-step="4" data-short="Vendosja &amp; Përsosja">
+          <span class="step-num">04</span>
+          <div class="step-content">
+            <h3>Vendosja &amp; Përsosja</h3>
+            <p>Veneers-i ose kompoziti ngjitet me precizion, formohet dhe poliroshet derisa të përshtatet në mënyrë të natyrshme me buzëqeshjen tuaj — gati për t'u shfaqur.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TREATMENTS ================= -->
+  <section class="treatments" id="trajtimet">
+    <div class="treatments-head">
+      <span class="section-eyebrow reveal">Opsionet</span>
+      <h2 class="section-title reveal reveal-d1">Tri rrugë drejt <em>rezultatit</em></h2>
+    </div>
+
+    <div class="treatments-grid">
+      <article class="treatment-card reveal reveal-d1">
+        <span class="treatment-num">01</span>
+        <h3>Veneers Porcelani</h3>
+        <p>Guaska ultra-të holla porcelani që mbulojnë sipërfaqen e dukshme të dhëmbit, duke korrigjuar njëkohësisht formën, ngjyrën dhe vogëlsitë e strukturës. Zgjidhja më e qëndrueshme për një transformim të plotë.</p>
+        <div class="treatment-meta">
+          <span>2–3 seanca</span>
+          <span>10–15+ vite</span>
+        </div>
+      </article>
+
+      <article class="treatment-card reveal reveal-d2">
+        <span class="treatment-num">02</span>
+        <h3>Zbardhim Profesional</h3>
+        <p>Zbardhim me gel të koncentruar, i aplikuar dhe i monitoruar nga dentisti — deri në disa nuanca më të bardhë brenda një seance të vetme, pa dëmtuar smaltin.</p>
+        <div class="treatment-meta">
+          <span>1 seancë</span>
+          <span>60–90 min</span>
+        </div>
+      </article>
+
+      <article class="treatment-card reveal reveal-d3">
+        <span class="treatment-num">03</span>
+        <h3>Kompozite Estetike</h3>
+        <p>Modelim direkt me rrëshirë kompozite për të mbyllur hapësira të vogla, korrigjuar të çara apo forma të çrregullta — shpejt, pa prerje dhe pa dhimbje.</p>
+        <div class="treatment-meta">
+          <span>1 seancë</span>
+          <span>30–60 min/dhëmb</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta" id="booking">
+    <div class="cta-inner">
+      <span class="section-eyebrow reveal">Hapi tjetër</span>
+      <h2 class="reveal reveal-d1">Gati për buzëqeshjen që <em>e meritoni</em>?</h2>
+      <p class="reveal reveal-d2">Rezervoni një konsultim fillestar dhe le të hartojmë bashkë planin tuaj personal të trajtimit estetik.</p>
+      <a href="#" class="btn btn-primary reveal reveal-d3">Rezervo Konsultimin Tuaj</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 — Të gjitha të drejtat e rezervuara.</span>
+  <a href="index.html#sherbimet">← Kthehu te Shërbimet</a>
+</footer>
+
+<script>
+  // Generic reveal-on-scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach((el) => revealObserver.observe(el));
+
+  // Scroll-driven "how it works" animation
+  const steps = document.querySelectorAll('.step');
+  const visual = document.getElementById('toothVisual');
+  const lineFill = document.getElementById('stageLineFill');
+  const dots = document.querySelectorAll('.stage-dot');
+  const caption = document.getElementById('stageCaption');
+
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const n = entry.target.dataset.step;
+        const short = entry.target.dataset.short;
+
+        steps.forEach((s) => s.classList.remove('is-active'));
+        entry.target.classList.add('is-active');
+
+        visual.className = 'tooth-visual-box is-' + n;
+        lineFill.style.width = (n * 25) + '%';
+
+        dots.forEach((d) => d.classList.toggle('active', d.dataset.n === n));
+
+        caption.style.opacity = '0';
+        setTimeout(() => {
+          caption.innerHTML = '0' + n + ' — ' + short;
+          caption.style.opacity = '1';
+        }, 150);
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  steps.forEach((s) => stepObserver.observe(s));
+</script>
+
+</body>
+</html>

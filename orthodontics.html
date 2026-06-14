@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ortodonci — Invisalign® & Damon System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F5F2EE;
+    --charcoal: #1C1C1A;
+    --gold: #C8A97E;
+    --stone: #9B9088;
+    --mist: #E8E4DF;
+    --mist-dark: #D8D3CC;
+    --border: rgba(28,28,26,0.12);
+    --border-gold: rgba(200,169,126,0.35);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ===== Top bar ===== */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:28px 0;
+  }
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px;color:var(--charcoal);
+    text-decoration:none;
+    border:1px solid var(--border);
+    padding:8px 16px;border-radius:100px;
+    transition:border-color .25s, background .25s;
+  }
+  .back-link:hover{border-color:var(--border-gold);background:var(--mist);}
+  .topbar-mark{
+    font-family:'Fraunces', serif;
+    font-weight:500;font-size:18px;letter-spacing:0.02em;
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:60px 0 80px;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--stone);font-weight:500;margin-bottom:20px;
+  }
+  .hero-eyebrow::before{
+    content:'';display:inline-block;width:28px;height:1px;
+    background:var(--gold);vertical-align:middle;margin-right:12px;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--gold);
+  }
+  .hero p{
+    font-size:17px;color:#55524d;max-width:480px;margin-bottom:32px;
+  }
+  .hero-meta{
+    display:flex;gap:28px;flex-wrap:wrap;
+  }
+  .hero-meta div{
+    border-left:2px solid var(--gold);padding-left:14px;
+  }
+  .hero-meta .num{
+    font-family:'Fraunces', serif;font-size:28px;font-weight:500;
+    display:block;line-height:1;
+  }
+  .hero-meta .lab{
+    font-size:12px;color:var(--stone);margin-top:4px;
+    text-transform:uppercase;letter-spacing:0.08em;
+  }
+
+  /* Hero art: animated smile timeline */
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:24px;
+    background:var(--mist);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .hero-art::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 70% 25%, rgba(200,169,126,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-art svg{width:74%;height:74%;position:relative;z-index:1;}
+
+  /* ===== Section heads ===== */
+  .section{padding:90px 0;}
+  .section-head{
+    text-align:center;max-width:640px;margin:0 auto 64px;
+  }
+  .section-eyebrow{
+    font-size:13px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;margin-bottom:14px;
+  }
+  .section-head h2{
+    font-family:'Fraunces', serif;font-weight:400;
+    font-size:clamp(30px, 4.5vw, 46px);line-height:1.15;
+  }
+  .section-head p{
+    color:#55524d;font-size:16px;margin-top:16px;
+  }
+
+  /* ===== Process / animation section ===== */
+  .process{
+    background:var(--charcoal);
+    color:var(--cream);
+    border-radius:28px;
+    padding:64px 40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .process .section-eyebrow{color:var(--gold);}
+  .process h2{
+    font-family:'Fraunces', serif;font-weight:400;
+    font-size:clamp(28px,4vw,42px);line-height:1.15;
+    margin-bottom:18px;
+  }
+  .process-intro{color:#C9C6C0;font-size:15px;margin-bottom:36px;max-width:420px;}
+
+  .stage-list{display:flex;flex-direction:column;gap:0;}
+  .stage{
+    display:flex;gap:20px;align-items:flex-start;
+    padding:18px 0;
+    border-bottom:1px solid rgba(245,242,238,0.1);
+    transition:opacity .25s;
+  }
+  .stage:last-child{border-bottom:none;}
+  .stage-num{
+    font-family:'Fraunces', serif;font-size:20px;color:var(--stone);
+    min-width:32px;transition:color .25s;
+  }
+  .stage-body h3{
+    font-size:16px;font-weight:600;margin-bottom:4px;
+    transition:color .25s;
+  }
+  .stage-body p{
+    font-size:14px;color:#9B978F;margin:0;
+  }
+  .stage.active .stage-num{color:var(--gold);}
+  .stage.active .stage-body h3{color:var(--gold);}
+  .stage:not(.active){opacity:0.55;}
+
+  /* Scene panel */
+  .scene-panel{
+    background:var(--mist);
+    border-radius:20px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+  .scene-frame{
+    width:100%;
+    max-width:340px;
+    aspect-ratio:1/1.05;
+    position:relative;
+  }
+  .scene-frame svg{width:100%;height:100%;display:block;}
+
+  .progress{display:flex;gap:8px;}
+  .progress span{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(28,28,26,0.18);
+    transition:background .25s, transform .25s;
+  }
+  .progress span.active{
+    background:var(--gold);
+    transform:scale(1.25);
+  }
+
+  /* Tooth motion */
+  .tooth{
+    transition: transform 1.4s cubic-bezier(.4,0,.2,1);
+    transform-box: fill-box;
+    transform-origin: center bottom;
+  }
+  .bracket, .wire{
+    transition: opacity 1s ease, transform 1.4s cubic-bezier(.4,0,.2,1);
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .wire{
+    transition: d 1.4s cubic-bezier(.4,0,.2,1), opacity 1s ease;
+  }
+  .aligner{
+    transition: opacity 1s ease, transform 1.4s cubic-bezier(.4,0,.2,1);
+  }
+  .fade-out{opacity:0;}
+
+  /* gentle ambient shimmer on wire */
+  .shine{
+    animation: shimmer 2.4s ease-in-out infinite;
+  }
+  .shine.fade-out{
+    animation: none;
+    opacity: 0;
+  }
+  @keyframes shimmer{
+    0%,100%{opacity:0.35;}
+    50%{opacity:0.9;}
+  }
+
+  /* ===== Why section / cards ===== */
+  .grid-3{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .card{
+    background:var(--mist);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:32px 28px;
+  }
+  .card-icon{
+    width:44px;height:44px;border-radius:12px;
+    background:var(--cream);
+    border:1px solid var(--border-gold);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .card h3{
+    font-family:'Fraunces', serif;font-weight:500;font-size:20px;margin-bottom:10px;
+  }
+  .card p{font-size:14.5px;color:#55524d;}
+
+  /* ===== Options comparison ===== */
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .option-card{
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:32px 28px;
+    background:var(--cream);
+    position:relative;
+  }
+  .option-card.featured{
+    border:1px solid var(--gold);
+    background:var(--mist);
+  }
+  .option-badge{
+    display:inline-block;
+    font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+    border:1px solid var(--border-gold);
+    border-radius:100px;padding:4px 12px;
+    margin-bottom:16px;
+  }
+  .option-card h3{
+    font-family:'Fraunces', serif;font-size:22px;font-weight:500;margin-bottom:8px;
+  }
+  .option-card .option-sub{
+    font-size:13px;color:var(--stone);margin-bottom:16px;
+  }
+  .option-card ul{
+    list-style:none;display:flex;flex-direction:column;gap:10px;
+  }
+  .option-card li{
+    font-size:14.5px;color:#55524d;
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .option-card li::before{
+    content:'';
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+    margin-top:7px;flex-shrink:0;
+  }
+
+  /* ===== Brands strip ===== */
+  .brands{
+    display:flex;justify-content:center;align-items:center;gap:64px;
+    padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+  }
+  .brand-name{
+    font-family:'Fraunces', serif;font-size:24px;color:var(--stone);
+    letter-spacing:0.02em;
+  }
+
+  /* ===== FAQ ===== */
+  .faq{max-width:720px;margin:0 auto;}
+  .faq-item{
+    border-bottom:1px solid var(--border);
+    padding:24px 0;
+  }
+  .faq-item summary{
+    font-family:'Fraunces', serif;font-size:19px;font-weight:500;
+    cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+';font-family:'Inter',sans-serif;font-size:22px;color:var(--gold);
+    transition:transform .25s;flex-shrink:0;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{
+    margin-top:14px;color:#55524d;font-size:15px;max-width:600px;
+  }
+
+  /* ===== CTA ===== */
+  .cta{
+    text-align:center;
+    border:1px solid var(--border-gold);
+    border-radius:24px;
+    padding:64px 32px;
+    background:var(--mist);
+  }
+  .cta h2{
+    font-family:'Fraunces', serif;font-weight:400;
+    font-size:clamp(28px,4.5vw,44px);margin-bottom:16px;
+  }
+  .cta p{color:#55524d;margin-bottom:32px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--charcoal);color:var(--cream);
+    padding:16px 32px;border-radius:100px;
+    font-size:15px;font-weight:500;
+    text-decoration:none;
+    border:1px solid var(--charcoal);
+    transition:background .25s, color .25s;
+  }
+  .btn:hover{background:transparent;color:var(--charcoal);}
+
+  /* ===== Footer ===== */
+  footer{
+    padding:40px 0 60px;text-align:center;
+    color:var(--stone);font-size:13px;
+  }
+
+  /* ===== Reveal on scroll ===== */
+  .reveal{
+    opacity:0;transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 880px){
+    .hero{grid-template-columns:1fr;gap:40px;padding:40px 0 60px;}
+    .hero-art{max-width:340px;margin:0 auto;width:100%;}
+    .process{grid-template-columns:1fr;padding:40px 24px;border-radius:20px;}
+    .grid-3{grid-template-columns:1fr;}
+    .options{grid-template-columns:1fr;}
+    .section{padding:60px 0;}
+    .brands{gap:36px;}
+    .hero-meta{gap:20px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none;opacity:1;transform:none;}
+    .tooth, .bracket, .wire, .aligner{transition:none;}
+    .shine{animation:none;}
+  }
+  .brands {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.brand-logo {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
+}
+
+.brand-name {
+  margin-top: 8px;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== Topbar ===== -->
+  <header class="topbar">
+    <span class="topbar-mark">Prime Dental</span>
+    <a href="index.html" class="back-link">← Kthehu te shërbimet</a>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="reveal">
+      <div class="hero-eyebrow">Shërbimi 02 — Ortodonci</div>
+      <h1>Buzëqeshja juaj, <em>rreshtuar</em> me kohë.</h1>
+      <p>
+        Aparate transparente dhe tradicionale për të gjitha moshat. Me
+        Invisalign® dhe Damon System, lëvizja e dhëmbëve bëhet më e
+        shpejtë, më komode dhe pothuajse e padukshme.
+      </p>
+      <div class="hero-meta">
+        <div>
+          <span class="num">2</span>
+          <span class="lab">Sisteme trajtimi</span>
+        </div>
+        <div>
+          <span class="num">6-18</span>
+          <span class="lab">Muaj mesatarisht</span>
+        </div>
+        <div>
+          <span class="num">0</span>
+          <span class="lab">Kontroll çdo javë</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-art reveal">
+      <svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- gum line -->
+        <path d="M20 60 Q120 40 220 60" stroke="var(--gold)" stroke-width="2" fill="none" opacity="0.5"/>
+        <!-- teeth row, slightly crooked -->
+        <g id="heroTeeth">
+          <rect class="tooth" x="33"  y="64" width="28" height="56" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(-8 47 92)"/>
+          <rect class="tooth" x="65"  y="60" width="28" height="58" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(6 79 91)"/>
+          <rect class="tooth" x="97"  y="64" width="28" height="58" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(-5 111 93)"/>
+          <rect class="tooth" x="129" y="60" width="28" height="58" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(7 143 91)"/>
+          <rect class="tooth" x="161" y="64" width="28" height="56" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(-6 175 92)"/>
+        </g>
+        <!-- wire -->
+        <path id="heroWire" class="wire shine" d="M42 92 Q88 104 111 86 Q138 75 178 96" stroke="var(--gold)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- brackets -->
+        <g id="heroBrackets">
+          <rect class="bracket" x="38"  y="86" width="16" height="12" rx="3" fill="var(--charcoal)"/>
+          <rect class="bracket" x="71"  y="82" width="16" height="12" rx="3" fill="var(--charcoal)"/>
+          <rect class="bracket" x="103" y="86" width="16" height="12" rx="3" fill="var(--charcoal)"/>
+          <rect class="bracket" x="135" y="82" width="16" height="12" rx="3" fill="var(--charcoal)"/>
+          <rect class="bracket" x="167" y="86" width="16" height="12" rx="3" fill="var(--charcoal)"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== Process / Animation section ===== -->
+  <section class="section">
+    <div class="process reveal">
+
+      <div>
+        <div class="section-eyebrow">Si funksionon</div>
+        <h2>Çdo dhëmb, lëvizur me precizion.</h2>
+        <p class="process-intro">
+          Sistemi i fërkimit të ulët Damon dhe planifikimi digjital Invisalign®
+          punojnë në harmoni me dhëmbët tuaj — duke i lëvizur gradualisht,
+          pa forcë të tepërt dhe pa shtrëngime të shpeshta.
+        </p>
+
+        <div class="stage-list" id="stageList">
+          <div class="stage active" data-stage="0">
+            <span class="stage-num">01</span>
+            <div class="stage-body">
+              <h3>Vlerësimi fillestar</h3>
+              <p>Skanim 3D dhe foto digjitale për të hartuar lëvizjen e plotë të dhëmbëve.</p>
+            </div>
+          </div>
+          <div class="stage" data-stage="1">
+            <span class="stage-num">02</span>
+            <div class="stage-body">
+              <h3>Vendosja e aparatit</h3>
+              <p>Brakete me fërkim të ulët fiksohen me kujdes, pa shtrëngim të tepruar.</p>
+            </div>
+          </div>
+          <div class="stage" data-stage="2">
+            <span class="stage-num">03</span>
+            <div class="stage-body">
+              <h3>Lëvizja graduale</h3>
+              <p>Teli ushtron forcë të lehtë e të vazhdueshme — dhëmbët rreshtohen ngadalë.</p>
+            </div>
+          </div>
+          <div class="stage" data-stage="3">
+            <span class="stage-num">04</span>
+            <div class="stage-body">
+              <h3>Buzëqeshja finale</h3>
+              <p>Rezultat i rreshtuar dhe i qëndrueshëm, gati për retenerin final.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene panel -->
+      <div class="scene-panel">
+        <div class="scene-frame">
+          <svg id="orthoSvg" viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animacion i lëvizjes së dhëmbëve me aparat dentar">
+
+            <!-- gum -->
+            <path d="M20 70 Q120 48 220 70 L220 30 L20 30 Z" fill="var(--mist-dark)" opacity="0.6"/>
+            <path d="M20 70 Q120 48 220 70" stroke="var(--gold)" stroke-width="2" fill="none" opacity="0.5"/>
+
+            <!-- TEETH (start crooked, animate to straight) -->
+            <g id="teeth">
+              <rect class="tooth" id="t1" x="32"  y="78" width="28" height="72" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(-6 46 114)"/>
+              <rect class="tooth" id="t2" x="72"  y="74" width="28" height="76" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(5 86 112)"/>
+              <rect class="tooth" id="t3" x="112" y="78" width="28" height="76" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(-4 126 116)"/>
+              <rect class="tooth" id="t4" x="152" y="74" width="28" height="76" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(5 166 112)"/>
+              <rect class="tooth" id="t5" x="192" y="78" width="28" height="72" rx="8" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.5" transform="rotate(-5 206 114)"/>
+            </g>
+
+            <!-- WIRE -->
+            <path id="wire" class="wire shine fade-out" d="M42 112 Q92 122 126 105 Q160 92 210 112" stroke="var(--gold)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+            <!-- BRACKETS -->
+            <g id="brackets" class="fade-out">
+              <rect class="bracket" id="b1" x="37"  y="104" width="18" height="14" rx="3" fill="var(--charcoal)"/>
+              <rect class="bracket" id="b2" x="77"  y="100" width="18" height="14" rx="3" fill="var(--charcoal)"/>
+              <rect class="bracket" id="b3" x="117" y="104" width="18" height="14" rx="3" fill="var(--charcoal)"/>
+              <rect class="bracket" id="b4" x="157" y="100" width="18" height="14" rx="3" fill="var(--charcoal)"/>
+              <rect class="bracket" id="b5" x="197" y="104" width="18" height="14" rx="3" fill="var(--charcoal)"/>
+            </g>
+
+            <!-- ALIGNER (clear overlay, hidden until final stage option) -->
+            <g id="aligner" class="aligner fade-out">
+              <rect x="30" y="64" width="180" height="92" rx="14" fill="var(--gold)" opacity="0.12" stroke="var(--gold)" stroke-width="1.5"/>
+            </g>
+
+          </svg>
+        </div>
+
+        <div class="progress" id="progressDots">
+          <span class="active" data-dot="0"></span>
+          <span data-dot="1"></span>
+          <span data-dot="2"></span>
+          <span data-dot="3"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Compare options ===== -->
+  <section class="section">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Zgjidhni teknikën</div>
+      <h2>Dy rrugë, një destinacion.</h2>
+      <p>Çdo gojë është e ndryshme — gjatë konsultës përcaktojmë cila teknikë përshtatet më mirë me nevojat tuaja.</p>
+    </div>
+
+    <div class="options reveal">
+      <div class="option-card">
+        <span class="option-badge">Tradicionale</span>
+        <h3>Damon System</h3>
+        <div class="option-sub">Brakete me fërkim të ulët, pa lidhje gome</div>
+        <ul>
+          <li>Forcë e lehtë dhe e vazhdueshme — më pak shtypje</li>
+          <li>Vizita më të rralla në klinikë</li>
+          <li>Ideale për korrigjime komplekse</li>
+          <li>I dukshëm, por efikas dhe i qëndrueshëm</li>
+        </ul>
+      </div>
+      <div class="option-card featured">
+        <span class="option-badge">Bashkëkohore</span>
+        <h3>Invisalign®</h3>
+        <div class="option-sub">Mbrojtëse transparente, të lëvizshme</div>
+        <ul>
+          <li>Pothuajse i padukshëm gjatë ditës</li>
+          <li>Hiqet për të ngrënë dhe larë dhëmbët</li>
+          <li>Plan trajtimi i simuluar digjitalisht më herët</li>
+          <li>Komoditet maksimal për të rriturit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why section ===== -->
+  <section class="section">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Përfitimet</div>
+      <h2>Pse të rregulloni tani?</h2>
+      <p>Dhëmbët e rreshtuar nuk janë vetëm estetikë — ndikojnë drejtpërdrejt në shëndetin oral afatgjatë.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="1.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <h3>Pastrim më i lehtë</h3>
+        <p>Dhëmbët e drejtë lënë më pak vende të fshehura për mbledhjen e pllakës bakteriale.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Më pak presion në nofull</h3>
+        <p>Rreshtimi korrekt shpërndan forcën e kafshimit në mënyrë të barabartë, duke ulur dhimbjen.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="1.6"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>Rezultat i qëndrueshëm</h3>
+        <p>Me retenerë pas trajtimit, rreshtimi i ri ruhet për dekada.</p>
+      </div>
+    </div>
+  </section>
+
+ <!-- ===== Brands ===== -->
+<div class="brands reveal">
+
+  <img class="brand-logo" src="https://nationalorthodontics.com/wp-content/uploads/2020/01/invisalign-1400x400.png.webp" alt="Invisalign®">
+
+  <img class="brand-logo" src="https://ormco.co.za/wp-content/uploads/sites/25/2016/03/LOGO_DAMON_SYSTEM-1.png" alt="Damon System">
+
+</div>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Pyetje të shpeshta</div>
+      <h2>Çdo gjë që duhet të dini.</h2>
+    </div>
+
+    <div class="faq reveal">
+      <details class="faq-item" open>
+        <summary>Sa kohë zgjat trajtimi me aparat?</summary>
+        <p>Varion nga 6 deri në 18 muaj, në varësi të kompleksitetit të rastit. Gjatë konsultës fillestare jepet një afat i përafërt bazuar në skanimin 3D.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A dhemb vendosja e aparatit?</summary>
+        <p>Vendosja vetë nuk dhemb. Mund të ndjehet presion i lehtë në ditët e para pas çdo rregullimi, që zakonisht kalon brenda 2-3 ditësh.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Invisalign apo aparat tradicional — cili është më i mirë?</summary>
+        <p>Të dyja janë efektive. Invisalign ofron komoditet dhe estetikë, ndërsa Damon System është më i përshtatshëm për korrigjime komplekse. Zgjedhja bëhet pas vlerësimit individual.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A kërkohet retener pas trajtimit?</summary>
+        <p>Po. Retenerët mbajnë dhëmbët në pozicionin e ri dhe parandalojnë rikthimin gradual në pozicionin fillestar.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section">
+    <div class="cta reveal">
+      <h2>Gati për t'i rreshtuar dhëmbët?</h2>
+      <p>Rezervoni një konsultë falas dhe zbuloni cila teknikë është ideale për ju.</p>
+      <a href="#" class="btn">Rezervo konsultë →</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Prime Dental — Ortodonci me Invisalign® & Damon System
+  </footer>
+
+</div>
+
+<script>
+  // ===== Reveal on scroll =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ===== Ortho stage animation (auto-cycles) =====
+  const stages = document.querySelectorAll('.stage');
+  const dots = document.querySelectorAll('#progressDots span');
+
+  const teeth = {
+    t1: document.getElementById('t1'),
+    t2: document.getElementById('t2'),
+    t3: document.getElementById('t3'),
+    t4: document.getElementById('t4'),
+    t5: document.getElementById('t5'),
+  };
+  const brackets = {
+    b1: document.getElementById('b1'),
+    b2: document.getElementById('b2'),
+    b3: document.getElementById('b3'),
+    b4: document.getElementById('b4'),
+    b5: document.getElementById('b5'),
+  };
+  const wire = document.getElementById('wire');
+  const bracketsGroup = document.getElementById('brackets');
+  const aligner = document.getElementById('aligner');
+
+  // Crooked transform per tooth (stage 0)
+  const crooked = {
+    t1: 'rotate(-4 46 114)',
+    t2: 'rotate(4 86 112)',
+    t3: 'rotate(-3 126 116)',
+    t4: 'rotate(4 166 112)',
+    t5: 'rotate(-4 206 114)',
+  };
+  // Straight transform (stage 2+)
+  const straight = {
+    t1: 'rotate(0 46 114)',
+    t2: 'rotate(0 86 112)',
+    t3: 'rotate(0 126 116)',
+    t4: 'rotate(0 166 112)',
+    t5: 'rotate(0 206 114)',
+  };
+  // Slightly less crooked (stage 1, just got braces on)
+  const midway = {
+    t1: 'rotate(-3 46 114)',
+    t2: 'rotate(3 86 112)',
+    t3: 'rotate(-2 126 116)',
+    t4: 'rotate(3 166 112)',
+    t5: 'rotate(-3 206 114)',
+  };
+
+  const wireCrooked = "M42 112 Q92 122 126 105 Q160 92 210 112";
+  const wireStraight = "M42 108 Q92 105 126 105 Q160 105 210 108";
+  const wireMid = "M42 110 Q92 115 126 105 Q160 97 210 110";
+
+  let current = 0;
+  let autoTimer = null;
+
+  function setTeeth(transforms){
+    Object.keys(teeth).forEach(id => {
+      teeth[id].setAttribute('transform', transforms[id]);
+    });
+  }
+
+  function showStage(idx){
+    current = idx;
+    stages.forEach((s,i) => s.classList.toggle('active', i === idx));
+    dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+
+    switch(idx){
+      case 0: // initial crooked teeth, no braces yet
+        setTeeth(crooked);
+        bracketsGroup.classList.add('fade-out');
+        wire.classList.add('fade-out');
+        aligner.classList.add('fade-out');
+        break;
+      case 1: // braces placed, teeth still mostly crooked
+        setTeeth(midway);
+        wire.setAttribute('d', wireCrooked);
+        bracketsGroup.classList.remove('fade-out');
+        wire.classList.remove('fade-out');
+        aligner.classList.add('fade-out');
+        break;
+      case 2: // gradual movement -- teeth straightening, wire following
+        setTeeth(straight);
+        wire.setAttribute('d', wireMid);
+        bracketsGroup.classList.remove('fade-out');
+        wire.classList.remove('fade-out');
+        aligner.classList.add('fade-out');
+        break;
+      case 3: // final smile -- straight teeth, wire straight, subtle aligner highlight
+        setTeeth(straight);
+        wire.setAttribute('d', wireStraight);
+        bracketsGroup.classList.remove('fade-out');
+        wire.classList.remove('fade-out');
+        aligner.classList.remove('fade-out');
+        break;
+    }
+  }
+
+  function nextStage(){
+    showStage((current + 1) % stages.length);
+  }
+
+  function startAuto(){
+    stopAuto();
+    autoTimer = setInterval(nextStage, 3000);
+  }
+  function stopAuto(){
+    if(autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  showStage(0);
+  startAuto();
+</script>
+
+</body>
+</html>
