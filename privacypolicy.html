@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Prime Dental Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F2EE;
+  --charcoal: #1C1C1A;
+  --gold: #C8A97E;
+  --stone: #9B9088;
+  --mist: #E8E4DF;
+  --mist-dark: #D8D3CC;
+  --border: rgba(28,28,26,0.12);
+  --border-gold: rgba(200,169,126,0.35);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  background:var(--cream);
+  color:var(--charcoal);
+  font-family:"DM Sans",sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+::selection{background:var(--gold);color:var(--cream)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--stone)}
+a{color:inherit;text-decoration:none}
+
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.label{font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:var(--stone)}
+.container{max-width:1440px;margin:0 auto;padding:0 4rem}
+@media(max-width:768px){.container{padding:0 1.5rem}}
+
+/* --- NAV --- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(245,242,238,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1440px;margin:0 auto;padding:0 4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:80px;
+  gap:1.5rem;
+}
+@media(max-width:768px){.nav-inner{padding:0 1.5rem}}
+.nav-logo .name{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:300;letter-spacing:-.02em;line-height:1}
+.nav-logo .sub{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-top:2px}
+
+.nav-right{display:flex;align-items:center;gap:1.75rem}
+
+.nav-back{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:var(--stone);
+  transition:color .3s;
+  white-space:nowrap;
+}
+.nav-back:hover{color:var(--charcoal)}
+.nav-back .arr{color:var(--gold)}
+
+/* language switcher */
+.lang-switch{
+  display:flex;align-items:center;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:3px;
+  gap:2px;
+}
+.lang-switch button{
+  font-family:"DM Sans",sans-serif;
+  font-size:.6875rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--stone);
+  padding:.4rem .85rem;
+  border-radius:999px;
+  transition:background .3s,color .3s;
+}
+.lang-switch button.active{background:var(--charcoal);color:var(--cream)}
+.lang-switch button:not(.active):hover{color:var(--charcoal)}
+@media(max-width:600px){.nav-back{display:none}}
+
+/* --- HERO --- */
+.policy-hero{
+  padding:190px 0 70px;
+  border-bottom:1px solid var(--border);
+}
+.policy-hero .label{margin-bottom:1.25rem}
+.policy-hero h1{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:300;
+  font-size:clamp(2.6rem,5vw,4.2rem);
+  letter-spacing:-.01em;
+  max-width:18ch;
+}
+.policy-hero .meta{
+  margin-top:1.5rem;
+  display:flex;gap:2rem;flex-wrap:wrap;
+  font-size:.8125rem;color:var(--stone);
+}
+.policy-hero .meta strong{color:var(--charcoal);font-weight:500}
+
+/* --- LAYOUT --- */
+.policy-body{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:5rem;
+  padding:4.5rem 0 7rem;
+  align-items:start;
+}
+@media(max-width:900px){
+  .policy-body{grid-template-columns:1fr;gap:2.5rem}
+}
+
+/* --- TOC --- */
+.toc{position:sticky;top:110px}
+.toc .label{margin-bottom:1rem;display:block}
+.toc ol{list-style:none;counter-reset:toc}
+.toc li{counter-increment:toc;margin-bottom:.15rem}
+.toc a{
+  display:flex;gap:.75rem;
+  padding:.55rem 0;
+  font-size:.8125rem;color:var(--stone);
+  border-bottom:1px solid transparent;
+  transition:color .3s,border-color .3s;
+}
+.toc a::before{
+  content:counter(toc,decimal-leading-zero);
+  font-family:"Cormorant Garamond",serif;
+  color:var(--gold);
+  font-size:.8125rem;
+  flex-shrink:0;
+}
+.toc a:hover,.toc a.active{color:var(--charcoal)}
+.toc a.active{border-bottom-color:var(--border-gold)}
+@media(max-width:900px){.toc{position:static;display:none}}
+
+/* --- CONTENT --- */
+.policy-content section{
+  padding-bottom:3rem;
+  margin-bottom:3rem;
+  border-bottom:1px solid var(--border);
+  scroll-margin-top:110px;
+}
+.policy-content section:last-child{border-bottom:none;margin-bottom:0}
+
+.sec-num{
+  font-family:"Cormorant Garamond",serif;
+  font-style:italic;
+  color:var(--gold);
+  font-size:1rem;
+  margin-bottom:.5rem;
+  display:block;
+}
+.policy-content h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:400;
+  font-size:1.9rem;
+  margin-bottom:1.1rem;
+  letter-spacing:-.01em;
+}
+.policy-content h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:500;
+  font-size:1.2rem;
+  margin:1.6rem 0 .6rem;
+}
+.policy-content p{
+  font-size:.9375rem;
+  color:#3a3a37;
+  max-width:68ch;
+  margin-bottom:1rem;
+}
+.policy-content ul{
+  margin:0 0 1.1rem 0;
+  padding-left:0;
+  list-style:none;
+  max-width:68ch;
+}
+.policy-content ul li{
+  position:relative;
+  padding-left:1.3rem;
+  font-size:.9375rem;
+  color:#3a3a37;
+  margin-bottom:.6rem;
+}
+.policy-content ul li::before{
+  content:'';
+  position:absolute;left:0;top:.55rem;
+  width:5px;height:1px;
+  background:var(--gold);
+}
+.policy-content strong{font-weight:500;color:var(--charcoal)}
+
+.callout{
+  background:var(--mist);
+  border:1px solid var(--border-gold);
+  border-radius:2px;
+  padding:1.5rem 1.75rem;
+  margin:1.5rem 0;
+  max-width:68ch;
+}
+.callout .label{margin-bottom:.5rem;color:var(--gold)}
+.callout p{margin-bottom:0;font-size:.875rem}
+
+.rights-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:1.5rem;
+  max-width:68ch;
+}
+.rights-grid div{background:var(--cream);padding:1.25rem 1.5rem}
+.rights-grid h4{font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:500;margin-bottom:.35rem}
+.rights-grid p{font-size:.8125rem;margin-bottom:0;color:var(--stone)}
+@media(max-width:600px){.rights-grid{grid-template-columns:1fr}}
+
+/* --- CONTACT --- */
+.contact-block{
+  background:var(--charcoal);
+  color:var(--cream);
+  padding:3.5rem;
+  border-radius:2px;
+}
+.contact-block .label{color:var(--gold);margin-bottom:1rem}
+.contact-block h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:300;
+  font-size:1.8rem;
+  margin-bottom:1.25rem;
+  max-width:24ch;
+}
+.contact-block p{color:var(--mist-dark);font-size:.9375rem;max-width:52ch;margin-bottom:1.5rem}
+.contact-list{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem}
+.contact-list span{color:var(--stone);margin-right:.5rem}
+@media(max-width:600px){.contact-block{padding:2.25rem}}
+
+footer{
+  border-top:1px solid var(--border);
+  padding:2rem 0;
+}
+.footer-inner{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:.75rem;color:var(--stone);
+}
+
+/* --- LANG SWITCHING --- */
+.lang-page{display:none}
+.lang-page.active{display:block}
+</style>
+</head>
+<body data-active-lang="sq">
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="name serif">Prime Dental</div>
+      <div class="sub" data-tr="clinic">Klinikë</div>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="nav-back" data-tr="back">Kthehu te faqja <span class="arr">→</span></a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="sq" class="active">SQ</button>
+        <button type="button" data-lang="mk">MK</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════ ALBANIAN (default) ══════════════════════ -->
+<div class="lang-page active" data-lang="sq">
+
+<header class="policy-hero">
+  <div class="container">
+    <span class="label">Ligjore · Informacion për Pacientët</span>
+    <h1 class="serif">Politika e Privatësisë</h1>
+    <div class="meta">
+      <div>Data e hyrjes në fuqi: <strong>7 gusht 2026</strong></div>
+      <div>Rishikuar për herë të fundit: <strong>7 gusht 2026</strong></div>
+    </div>
+  </div>
+</header>
+
+<main class="container policy-body">
+  <nav class="toc" aria-label="Përmbajtja">
+    <span class="label">Përmbajtja</span>
+    <ol>
+      <li><a href="#sq-overview">Përmbledhje</a></li>
+      <li><a href="#sq-collect">Informacioni që Mbledhim</a></li>
+      <li><a href="#sq-use">Si e Përdorim Atë</a></li>
+      <li><a href="#sq-hipaa">Informacioni Juaj Shëndetësor</a></li>
+      <li><a href="#sq-share">Kur e Ndajmë Informacionin</a></li>
+      <li><a href="#sq-cookies">Cookie-t dhe Faqja Jonë</a></li>
+      <li><a href="#sq-rights">Të Drejtat dhe Zgjedhjet Tuaja</a></li>
+      <li><a href="#sq-security">Si e Mbrojmë Atë</a></li>
+      <li><a href="#sq-retention">Ruajtja e të Dhënave</a></li>
+      <li><a href="#sq-minors">Informacioni i Fëmijëve</a></li>
+      <li><a href="#sq-changes">Ndryshimet në Këtë Politikë</a></li>
+      <li><a href="#sq-contact">Na Kontaktoni</a></li>
+    </ol>
+  </nav>
+
+  <div class="policy-content">
+
+    <section id="sq-overview">
+      <span class="sec-num">Ⅰ.</span>
+      <h2>Përmbledhje</h2>
+      <p>Në Prime Dental Clinic, besimi që pacientët tanë vendosin tek ne shkon përtej karriges së trajtimit. Kjo politikë shpjegon, në gjuhë të thjeshtë, çfarë informacioni personal dhe shëndetësor mbledhim, pse e mbledhim, si përdoret, dhe cilat janë zgjedhjet dhe të drejtat tuaja.</p>
+      <p>Kjo politikë zbatohet për informacionin e mbledhur në klinikën tonë, nëpërmjet telefonit, portalit të pacientëve, dhe faqes sonë të internetit. Ajo zbatohet për të gjithë pacientët aktualë, ish-pacientët, pacientët e mundshëm, si dhe vizitorët e faqes sonë.</p>
+      <div class="callout">
+        <span class="label">Shkurtimisht</span>
+        <p>Ne mbledhim vetëm atë që na duhet për të ofruar kujdes dentar të sigurt dhe cilësor, dhe për të drejtuar klinikën tonë në mënyrë të përgjegjshme. Ne kurrë nuk e shesim informacionin tuaj personal apo shëndetësor.</p>
+      </div>
+    </section>
+
+    <section id="sq-collect">
+      <span class="sec-num">Ⅱ.</span>
+      <h2>Informacioni që Mbledhim</h2>
+      <p>Në varësi të mënyrës si ndërveproni me ne, ne mund të mbledhim kategoritë e mëposhtme të informacionit:</p>
+      <h3>Identiteti dhe të dhënat e kontaktit</h3>
+      <ul>
+        <li>Emri i plotë, data e lindjes, adresa, numri i telefonit dhe email-i</li>
+        <li>Kontakti i emergjencës dhe, kur është e zbatueshme, të dhënat e kujdestarit ligjor</li>
+        <li>Dokument identifikimi i lëshuar nga shteti, kur kërkohet për verifikim identiteti</li>
+      </ul>
+      <h3>Informacioni shëndetësor dhe i trajtimit</h3>
+      <ul>
+        <li>Historiku dentar dhe mjekësor, alergjitë dhe medikamentet aktuale</li>
+        <li>Shënime klinike, planet e trajtimit, rentgenografi, skanime dhe fotografi</li>
+        <li>Shënime të procedurave të kryera dhe rezultateve</li>
+      </ul>
+      <h3>Informacioni i faturimit dhe sigurimit</h3>
+      <ul>
+        <li>Ofruesi i sigurimit, detajet e policës dhe kërkesave për dëmshpërblim</li>
+        <li>Metoda e pagesës dhe historiku i faturimit</li>
+      </ul>
+      <h3>Aktiviteti në faqen e internetit dhe takimet</h3>
+      <ul>
+        <li>Kërkesat për takime dhe detajet e rezervimit të dorëzuara online ose me telefon</li>
+        <li>Informacioni i pajisjes dhe shfletimit i mbledhur përmes cookie-ve (shih Seksionin VI)</li>
+      </ul>
+    </section>
+
+    <section id="sq-use">
+      <span class="sec-num">Ⅲ.</span>
+      <h2>Si e Përdorim Atë</h2>
+      <p>Ne e përdorim informacionin tuaj për të:</p>
+      <ul>
+        <li>Diagnostikuar, planifikuar dhe ofruar trajtim dentar dhe kujdes pasues</li>
+        <li>Planifikuar, konfirmuar dhe kujtuar takimet tuaja</li>
+        <li>Përpunuar faturimin, kërkesat e sigurimit dhe pagesat</li>
+        <li>Mbajtur shënime klinike dhe administrative të sakta</li>
+        <li>Komunikuar me ju rreth kujdesit tuaj, përfshirë rezultatet e testeve dhe rekomandimet e trajtimit</li>
+        <li>Përmbushur detyrimet tona ligjore, rregullatore dhe profesionale</li>
+        <li>Përmirësuar shërbimet tona dhe, me pëlqimin tuaj, dërguar kujtesa për takime ose mirëqenie</li>
+      </ul>
+      <p>Ne nuk e përdorim informacionin tuaj shëndetësor për qëllime marketingu pa pëlqimin tuaj të qartë dhe të veçantë.</p>
+    </section>
+
+    <section id="sq-hipaa">
+      <span class="sec-num">Ⅳ.</span>
+      <h2>Informacioni Juaj Shëndetësor</h2>
+      <p>Si ofrues i kujdesit shëndetësor, ne trajtojmë informacionin e mbrojtur shëndetësor ("PHI") në përputhje me ligjet e zbatueshme për privatësinë shëndetësore. Stafi ynë klinik ka qasje në të dhënat tuaja vetëm kur është e nevojshme për ofrimin ose koordinimin e kujdesit tuaj.</p>
+      <div class="callout">
+        <span class="label">Njoftimi i Praktikave të Privatësisë</span>
+        <p>Një Njoftim i plotë i Praktikave të Privatësisë, që përshkruan në detaje si mund të përdoret dhe zbulohet informacioni juaj shëndetësor, është i disponueshëm në recepsionin tonë dhe me kërkesë. Kjo politikë përmbledh, por nuk zëvendëson, atë njoftim.</p>
+      </div>
+    </section>
+
+    <section id="sq-share">
+      <span class="sec-num">Ⅴ.</span>
+      <h2>Kur e Ndajmë Informacionin</h2>
+      <p>Ne e ndajmë informacionin vetëm kur është e nevojshme, dhe vetëm me:</p>
+      <ul>
+        <li><strong>Ofrues të tjerë të trajtimit</strong> — si specialistë, laboratorë, ose dentistë referues, për qëllime të kujdesit tuaj</li>
+        <li><strong>Ofruesit e sigurimit</strong> — për të përpunuar kërkesat dhe verifikuar mbulimin</li>
+        <li><strong>Ofrues shërbimesh</strong> — si furnitorët tanë të menaxhimit të praktikës, faturimit, ose IT-së, të detyruar nga konfidencialiteti</li>
+        <li><strong>Autoritetet rregullatore</strong> — kur kërkohet nga ligji, urdhri i gjykatës, ose detyrimi profesional</li>
+      </ul>
+      <p><strong>Ne nuk e shesim informacionin tuaj personal apo shëndetësor te palët e treta, kurrë.</strong></p>
+    </section>
+
+    <section id="sq-cookies">
+      <span class="sec-num">Ⅵ.</span>
+      <h2>Cookie-t dhe Faqja Jonë e Internetit</h2>
+      <p>Faqja jonë e internetit përdor cookie dhe teknologji të ngjashme për të mbajtur mend preferencat tuaja, kuptuar si vizitorët e përdorin faqen, dhe mbështetur veçori si format e kërkesave për takime. Ju mund t'i kontrolloni cookie-t përmes cilësimeve të shfletuesit tuaj; çaktivizimi i tyre mund të kufizojë disa veçori të faqes.</p>
+    </section>
+
+    <section id="sq-rights">
+      <span class="sec-num">Ⅶ.</span>
+      <h2>Të Drejtat dhe Zgjedhjet Tuaja</h2>
+      <p>Në varësi të ligjit të zbatueshëm, ju keni të drejtën për:</p>
+      <div class="rights-grid">
+        <div><h4>Qasje</h4><p>Kërkoni një kopje të të dhënave tuaja dentare dhe shëndetësore.</p></div>
+        <div><h4>Korrigjim</h4><p>Na kërkoni të korrigjojmë informacionin e pasaktë ose të paplotë.</p></div>
+        <div><h4>Kufizim</h4><p>Kërkoni kufizime se si përdoret ose ndahet informacioni i caktuar.</p></div>
+        <div><h4>Portabilitet</h4><p>Kërkoni transferimin e të dhënave tuaja tek një ofrues tjetër.</p></div>
+        <div><h4>Tërheqje pëlqimi</h4><p>Refuzoni komunikimet jo-thelbësore në çdo kohë.</p></div>
+        <div><h4>Ankesë</h4><p>Ngrini shqetësime direkt me ne ose me një rregullator përkatës.</p></div>
+      </div>
+      <p style="margin-top:1.5rem">Për të ushtruar ndonjë nga këto të drejta, na kontaktoni duke përdorur detajet në Seksionin XII. Ne do të përgjigjemi brenda afatit kohor të kërkuar nga ligji i zbatueshëm.</p>
+    </section>
+
+    <section id="sq-security">
+      <span class="sec-num">Ⅷ.</span>
+      <h2>Si e Mbrojmë Atë</h2>
+      <p>Ne mbajmë masa mbrojtëse administrative, teknike dhe fizike të përshtatshme me ndjeshmërinë e informacionit që mbajmë, përfshirë qasje të kufizuar të stafit, sisteme të sigurta të mbajtjes së shënimeve, dhe ruajtje elektronike të enkriptuar. Asnjë metodë ruajtjeje apo transmetimi nuk është plotësisht e sigurt, por ne punojmë vazhdimisht për të mbrojtur informacionin tuaj nga qasja e paautorizuar, humbja, ose keqpërdorimi.</p>
+    </section>
+
+    <section id="sq-retention">
+      <span class="sec-num">Ⅸ.</span>
+      <h2>Ruajtja e të Dhënave</h2>
+      <p>Ne i ruajmë të dhënat e pacientëve për aq kohë sa kërkohet nga rregulloret e zbatueshme të bordit dentar dhe ligjit, dhe sa është e nevojshme për të ofruar kujdes të vazhdueshëm, për t'u mbrojtur nga kërkesat ligjore, dhe për të përmbushur detyrimet tona profesionale. Kur informacioni nuk kërkohet më, ai asgjësohet në mënyrë të sigurt.</p>
+    </section>
+
+    <section id="sq-minors">
+      <span class="sec-num">Ⅹ.</span>
+      <h2>Informacioni i Fëmijëve</h2>
+      <p>Ne ofrojmë kujdes për pacientë të të gjitha moshave. Për pacientët nën 18 vjeç, informacioni mblidhet dhe menaxhohet me përfshirjen e një prindi ose kujdestari ligjor, i cili mund të ushtrojë të drejtat e përshkruara në këtë politikë në emër të pacientit, në përputhje me ligjin e zbatueshëm.</p>
+    </section>
+
+    <section id="sq-changes">
+      <span class="sec-num">Ⅺ.</span>
+      <h2>Ndryshimet në Këtë Politikë</h2>
+      <p>Ne mund ta përditësojmë këtë politikë herë pas here për të pasqyruar ndryshimet në praktikat tona ose kërkesat ligjore. Data e hyrjes në fuqi në krye të kësaj faqeje pasqyron rishikimin më të fundit. Ndryshimet materiale do të komunikohen përmes faqes sonë të internetit ose, kur është e përshtatshme, direkt me pacientët.</p>
+    </section>
+
+    <section id="sq-contact">
+      <span class="sec-num">Ⅻ.</span>
+      <div class="contact-block">
+        <span class="label">Pyetje ose kërkesa</span>
+        <h2 class="serif">Jemi të gatshëm të diskutojmë çdo gjë nga këto direkt me ju.</h2>
+        <p>Për pyetje rreth kësaj politike, për të kërkuar të dhënat tuaja, ose për të ushtruar ndonjë nga të drejtat tuaja, kontaktoni zyrtarin tonë të privatësisë më poshtë.</p>
+        <div class="contact-list">
+          <div><span>Zyrtari i Privatësisë —</span> Prime Dental Clinic</div>
+          <div><span>Email —</span> privacy@primedentalclinic.com</div>
+          <div><span>Telefon —</span> (555) 010-2249</div>
+          <div><span>Adresa —</span> Rruga Orchard 128, Nr. 4, Qyteti Juaj</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Prime Dental Clinic. Të gjitha të drejtat e rezervuara.</span>
+    <span>Ky dokument është një shabllon dhe duhet të rishikohet nga një këshilltar ligjor i kualifikuar përpara publikimit.</span>
+  </div>
+</footer>
+
+</div>
+
+<!-- ══════════════════════ MACEDONIAN ══════════════════════ -->
+<div class="lang-page" data-lang="mk">
+
+<header class="policy-hero">
+  <div class="container">
+    <span class="label">Правно · Информации за пациенти</span>
+    <h1 class="serif">Политика за приватност</h1>
+    <div class="meta">
+      <div>Датум на стапување во сила: <strong>7 август 2026</strong></div>
+      <div>Последно ревидирано: <strong>7 август 2026</strong></div>
+    </div>
+  </div>
+</header>
+
+<main class="container policy-body">
+  <nav class="toc" aria-label="Содржина">
+    <span class="label">Содржина</span>
+    <ol>
+      <li><a href="#mk-overview">Преглед</a></li>
+      <li><a href="#mk-collect">Информации што ги собираме</a></li>
+      <li><a href="#mk-use">Како ги користиме</a></li>
+      <li><a href="#mk-hipaa">Вашите здравствени информации</a></li>
+      <li><a href="#mk-share">Кога споделуваме информации</a></li>
+      <li><a href="#mk-cookies">Колачиња и нашата веб-страница</a></li>
+      <li><a href="#mk-rights">Вашите права и избори</a></li>
+      <li><a href="#mk-security">Како ги штитиме</a></li>
+      <li><a href="#mk-retention">Чување на податоци</a></li>
+      <li><a href="#mk-minors">Информации за деца</a></li>
+      <li><a href="#mk-changes">Промени во оваа политика</a></li>
+      <li><a href="#mk-contact">Контактирајте нè</a></li>
+    </ol>
+  </nav>
+
+  <div class="policy-content">
+
+    <section id="mk-overview">
+      <span class="sec-num">Ⅰ.</span>
+      <h2>Преглед</h2>
+      <p>Во Prime Dental Clinic, довербата што нашите пациенти ја вложуваат во нас се протега надвор од столот за третман. Оваа политика објаснува, на едноставен јазик, какви лични и здравствени информации собираме, зошто ги собираме, како се користат, и какви права и избори имате.</p>
+      <p>Оваа политика се однесува на информации собрани во нашата клиника, преку телефон, преку порталот за пациенти, и на нашата веб-страница. Се однесува на сите тековни, поранешни и потенцијални пациенти, како и на посетителите на нашата веб-страница.</p>
+      <div class="callout">
+        <span class="label">Накратко</span>
+        <p>Собираме само она што ни е потребно за да обезбедиме безбедна, висококвалитетна стоматолошка нега и за да ја водиме нашата клиника одговорно. Никогаш не ги продаваме вашите лични или здравствени информации.</p>
+      </div>
+    </section>
+
+    <section id="mk-collect">
+      <span class="sec-num">Ⅱ.</span>
+      <h2>Информации што ги собираме</h2>
+      <p>Во зависност од тоа како комуницирате со нас, може да ги собереме следните категории на информации:</p>
+      <h3>Идентитет и контакт податоци</h3>
+      <ul>
+        <li>Целосно име, датум на раѓање, адреса, телефонски број и е-пошта</li>
+        <li>Итен контакт и, каде што е применливо, податоци за старател</li>
+        <li>Државна лична исправа, кога е потребна за верификација на идентитет</li>
+      </ul>
+      <h3>Здравствени информации и информации за третман</h3>
+      <ul>
+        <li>Стоматолошка и медицинска историја, алергии и тековни лекови</li>
+        <li>Клинички белешки, планови за третман, рендгенски снимки, скенирања и фотографии</li>
+        <li>Записи за извршени процедури и резултати</li>
+      </ul>
+      <h3>Информации за наплата и осигурување</h3>
+      <ul>
+        <li>Осигурителна компанија, детали за полисата и барања за надомест</li>
+        <li>Начин на плаќање и историја на наплата</li>
+      </ul>
+      <h3>Активност на веб-страницата и закажување</h3>
+      <ul>
+        <li>Барања за термини и детали за резервација доставени онлајн или по телефон</li>
+        <li>Информации за уред и прелистување собрани преку колачиња (види Дел VI)</li>
+      </ul>
+    </section>
+
+    <section id="mk-use">
+      <span class="sec-num">Ⅲ.</span>
+      <h2>Како ги користиме</h2>
+      <p>Ги користиме вашите информации за да:</p>
+      <ul>
+        <li>Дијагностицираме, планираме и обезбедиме стоматолошки третман и понатамошна нега</li>
+        <li>Закажеме, потврдиме и потсетиме за термините</li>
+        <li>Обработиме наплата, осигурителни барања и плаќања</li>
+        <li>Одржуваме точни клинички и административни записи</li>
+        <li>Комуницираме со вас за вашата нега, вклучително резултати од тестови и препораки за третман</li>
+        <li>Ги исполниме нашите законски, регулаторни и професионални обврски</li>
+        <li>Ги подобриме нашите услуги и, со ваша согласност, испраќаме потсетници за термини или благосостојба</li>
+      </ul>
+      <p>Не ги користиме вашите здравствени информации за маркетинг цели без ваша изречна, посебна согласност.</p>
+    </section>
+
+    <section id="mk-hipaa">
+      <span class="sec-num">Ⅳ.</span>
+      <h2>Вашите здравствени информации</h2>
+      <p>Како давател на здравствена заштита, ги обработуваме заштитените здравствени информации ("PHI") во согласност со применливите закони за здравствена приватност. Нашиот клинички тим пристапува до вашите записи само кога е потребно за обезбедување или координирање на вашата нега.</p>
+      <div class="callout">
+        <span class="label">Известување за практики за приватност</span>
+        <p>Целосно Известување за практики за приватност, кое детално опишува како вашите здравствени информации може да се користат и откриваат, е достапно на нашата рецепција и на барање. Оваа политика ги сумира, но не ги заменува, тие известувања.</p>
+      </div>
+    </section>
+
+    <section id="mk-share">
+      <span class="sec-num">Ⅴ.</span>
+      <h2>Кога споделуваме информации</h2>
+      <p>Ги споделуваме информациите само кога е неопходно, и само со:</p>
+      <ul>
+        <li><strong>Други даватели на третман</strong> — како специјалисти, лаборатории или стоматолози упатувачи, за целите на вашата нега</li>
+        <li><strong>Осигурителни компании</strong> — за обработка на барања и потврда на покриеност</li>
+        <li><strong>Даватели на услуги</strong> — како нашите добавувачи за управување со практиката, наплата или ИТ, обврзани со доверливост</li>
+        <li><strong>Регулаторни органи</strong> — кога е потребно според закон, судски налог или професионална обврска</li>
+      </ul>
+      <p><strong>Никогаш не ги продаваме вашите лични или здравствени информации на трети страни.</strong></p>
+    </section>
+
+    <section id="mk-cookies">
+      <span class="sec-num">Ⅵ.</span>
+      <h2>Колачиња и нашата веб-страница</h2>
+      <p>Нашата веб-страница користи колачиња и слични технологии за да ги памти вашите преференции, разбере како посетителите ја користат страницата, и поддржи функции како формулари за барање термини. Можете да ги контролирате колачињата преку поставките на вашиот прелистувач; нивното оневозможување може да ограничи некои функции на страницата.</p>
+    </section>
+
+    <section id="mk-rights">
+      <span class="sec-num">Ⅶ.</span>
+      <h2>Вашите права и избори</h2>
+      <p>Во согласност со применливиот закон, имате право на:</p>
+      <div class="rights-grid">
+        <div><h4>Пристап</h4><p>Побарајте копија од вашите стоматолошки и здравствени записи.</p></div>
+        <div><h4>Исправка</h4><p>Побарајте да ги исправиме неточните или нецелосните информации.</p></div>
+        <div><h4>Ограничување</h4><p>Побарајте ограничувања на тоа како се користат или споделуваат одредени информации.</p></div>
+        <div><h4>Преносливост</h4><p>Побарајте вашите записи да бидат пренесени кај друг давател.</p></div>
+        <div><h4>Повлекување согласност</h4><p>Откажете се од несуштинска комуникација во секое време.</p></div>
+        <div><h4>Жалба</h4><p>Изнесете загриженост директно кај нас или кај релевантен регулатор.</p></div>
+      </div>
+      <p style="margin-top:1.5rem">За да остварите кое било од овие права, контактирајте нè користејќи ги деталите во Дел XII. Ќе одговориме во рокот пропишан со применливиот закон.</p>
+    </section>
+
+    <section id="mk-security">
+      <span class="sec-num">Ⅷ.</span>
+      <h2>Како ги штитиме</h2>
+      <p>Одржуваме административни, технички и физички мерки за заштита соодветни на чувствителноста на информациите што ги чуваме, вклучувајќи ограничен пристап на персоналот, безбедни системи за водење записи, и енкриптирано електронско складирање. Ниту еден метод на складирање или пренос не е целосно безбеден, но постојано работиме на заштита на вашите информации од неовластен пристап, губење или злоупотреба.</p>
+    </section>
+
+    <section id="mk-retention">
+      <span class="sec-num">Ⅸ.</span>
+      <h2>Чување на податоци</h2>
+      <p>Ги чуваме записите на пациентите онолку долго колку што е потребно според применливите регулативи на стоматолошкиот одбор и законот, и колку што е потребно за обезбедување континуирана нега, одбрана од барања, и исполнување на нашите професионални обврски. Кога информациите повеќе не се потребни, тие безбедно се уништуваат.</p>
+    </section>
+
+    <section id="mk-minors">
+      <span class="sec-num">Ⅹ.</span>
+      <h2>Информации за деца</h2>
+      <p>Обезбедуваме нега за пациенти од сите возрасти. За пациенти под 18 години, информациите се собираат и управуваат со вклученост на родител или законски старател, кој може да ги остварува правата опишани во оваа политика во име на пациентот, во согласност со применливиот закон.</p>
+    </section>
+
+    <section id="mk-changes">
+      <span class="sec-num">Ⅺ.</span>
+      <h2>Промени во оваа политика</h2>
+      <p>Може да ја ажурираме оваа политика повремено за да ги одразиме промените во нашите практики или законските барања. Датумот на стапување во сила на врвот на оваа страница го одразува најновото ревидирање. Материјалните промени ќе бидат соопштени преку нашата веб-страница или, кога е соодветно, директно до пациентите.</p>
+    </section>
+
+    <section id="mk-contact">
+      <span class="sec-num">Ⅻ.</span>
+      <div class="contact-block">
+        <span class="label">Прашања или барања</span>
+        <h2 class="serif">Со задоволство ќе разговараме со вас директно за сето ова.</h2>
+        <p>За прашања во врска со оваа политика, за да ги побарате вашите записи, или да остварите кое било од вашите права, контактирајте го нашиот службеник за приватност подолу.</p>
+        <div class="contact-list">
+          <div><span>Службеник за приватност —</span> Prime Dental Clinic</div>
+          <div><span>Е-пошта —</span> privacy@primedentalclinic.com</div>
+          <div><span>Телефон —</span> (555) 010-2249</div>
+          <div><span>Адреса —</span> ул. Orchard бр. 128/4, Вашиот Град</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Prime Dental Clinic. Сите права се задржани.</span>
+    <span>Овој документ е шаблон и треба да биде прегледан од квалификуван правен советник пред објавување.</span>
+  </div>
+</footer>
+
+</div>
+
+<!-- ══════════════════════ ENGLISH ══════════════════════ -->
+<div class="lang-page" data-lang="en">
+
+<header class="policy-hero">
+  <div class="container">
+    <span class="label">Legal · Patient Information</span>
+    <h1 class="serif">Privacy Policy</h1>
+    <div class="meta">
+      <div>Effective date: <strong>August 7, 2026</strong></div>
+      <div>Last reviewed: <strong>August 7, 2026</strong></div>
+    </div>
+  </div>
+</header>
+
+<main class="container policy-body">
+  <nav class="toc" aria-label="Table of contents">
+    <span class="label">Contents</span>
+    <ol>
+      <li><a href="#en-overview">Overview</a></li>
+      <li><a href="#en-collect">Information We Collect</a></li>
+      <li><a href="#en-use">How We Use It</a></li>
+      <li><a href="#en-hipaa">Your Health Information</a></li>
+      <li><a href="#en-share">When We Share Information</a></li>
+      <li><a href="#en-cookies">Cookies &amp; Our Website</a></li>
+      <li><a href="#en-rights">Your Rights &amp; Choices</a></li>
+      <li><a href="#en-security">How We Protect It</a></li>
+      <li><a href="#en-retention">Retention</a></li>
+      <li><a href="#en-minors">Children's Information</a></li>
+      <li><a href="#en-changes">Changes to This Policy</a></li>
+      <li><a href="#en-contact">Contact Us</a></li>
+    </ol>
+  </nav>
+
+  <div class="policy-content">
+
+    <section id="en-overview">
+      <span class="sec-num">Ⅰ.</span>
+      <h2>Overview</h2>
+      <p>At Prime Dental Clinic, the trust our patients place in us extends beyond the chair. This policy explains, in plain language, what personal and health information we collect, why we collect it, how it's used, and the choices and rights available to you.</p>
+      <p>This policy applies to information collected in our clinic, over the phone, through our patient portal, and on our website. It applies to all current, former, and prospective patients, as well as visitors to our website.</p>
+      <div class="callout">
+        <span class="label">In short</span>
+        <p>We collect only what we need to provide safe, high-quality dental care and to run our clinic responsibly. We never sell your personal or health information.</p>
+      </div>
+    </section>
+
+    <section id="en-collect">
+      <span class="sec-num">Ⅱ.</span>
+      <h2>Information We Collect</h2>
+      <p>Depending on how you interact with us, we may collect the following categories of information:</p>
+      <h3>Identity &amp; contact details</h3>
+      <ul>
+        <li>Full name, date of birth, address, phone number, and email</li>
+        <li>Emergency contact and, where applicable, guardian or next-of-kin details</li>
+        <li>Government-issued ID, where required for identity verification</li>
+      </ul>
+      <h3>Health &amp; treatment information</h3>
+      <ul>
+        <li>Dental and medical history, allergies, and current medications</li>
+        <li>Clinical notes, treatment plans, x-rays, scans, and photographs</li>
+        <li>Records of procedures performed and outcomes</li>
+      </ul>
+      <h3>Billing &amp; insurance information</h3>
+      <ul>
+        <li>Insurance provider, policy and claims details</li>
+        <li>Payment method and billing history</li>
+      </ul>
+      <h3>Website &amp; appointment activity</h3>
+      <ul>
+        <li>Appointment requests and booking details submitted online or by phone</li>
+        <li>Device and browsing information collected via cookies (see Section VI)</li>
+      </ul>
+    </section>
+
+    <section id="en-use">
+      <span class="sec-num">Ⅲ.</span>
+      <h2>How We Use It</h2>
+      <p>We use your information to:</p>
+      <ul>
+        <li>Diagnose, plan, and deliver dental treatment and follow-up care</li>
+        <li>Schedule, confirm, and remind you of appointments</li>
+        <li>Process billing, insurance claims, and payments</li>
+        <li>Maintain accurate clinical and administrative records</li>
+        <li>Communicate with you about your care, including test results and treatment recommendations</li>
+        <li>Meet our legal, regulatory, and professional obligations</li>
+        <li>Improve our services and, with your consent, send appointment or wellness reminders</li>
+      </ul>
+      <p>We do not use your health information for marketing purposes without your explicit, separate consent.</p>
+    </section>
+
+    <section id="en-hipaa">
+      <span class="sec-num">Ⅳ.</span>
+      <h2>Your Health Information</h2>
+      <p>As a healthcare provider, we handle protected health information ("PHI") in line with applicable health privacy laws. Our clinical team accesses your records only as needed to provide or coordinate your care.</p>
+      <div class="callout">
+        <span class="label">Notice of Privacy Practices</span>
+        <p>A full Notice of Privacy Practices, describing in detail how your health information may be used and disclosed, is available at our front desk and on request. This policy summarizes, but does not replace, that notice.</p>
+      </div>
+    </section>
+
+    <section id="en-share">
+      <span class="sec-num">Ⅴ.</span>
+      <h2>When We Share Information</h2>
+      <p>We share information only when necessary, and only with:</p>
+      <ul>
+        <li><strong>Other treating providers</strong> — such as specialists, labs, or referring dentists, for the purpose of your care</li>
+        <li><strong>Insurance providers</strong> — to process claims and verify coverage</li>
+        <li><strong>Service providers</strong> — such as our practice management, billing, or IT vendors, bound by confidentiality obligations</li>
+        <li><strong>Regulators or authorities</strong> — where required by law, court order, or professional obligation</li>
+      </ul>
+      <p><strong>We do not sell your personal or health information to third parties, ever.</strong></p>
+    </section>
+
+    <section id="en-cookies">
+      <span class="sec-num">Ⅵ.</span>
+      <h2>Cookies &amp; Our Website</h2>
+      <p>Our website uses cookies and similar technologies to remember your preferences, understand how visitors use the site, and support features like appointment request forms. You can control cookies through your browser settings; disabling them may limit some site features.</p>
+    </section>
+
+    <section id="en-rights">
+      <span class="sec-num">Ⅶ.</span>
+      <h2>Your Rights &amp; Choices</h2>
+      <p>Subject to applicable law, you have the right to:</p>
+      <div class="rights-grid">
+        <div><h4>Access</h4><p>Request a copy of your dental and health records.</p></div>
+        <div><h4>Correction</h4><p>Ask us to correct inaccurate or incomplete information.</p></div>
+        <div><h4>Restriction</h4><p>Request limits on how certain information is used or shared.</p></div>
+        <div><h4>Portability</h4><p>Request your records be transferred to another provider.</p></div>
+        <div><h4>Withdraw consent</h4><p>Opt out of non-essential communications at any time.</p></div>
+        <div><h4>Complaint</h4><p>Raise concerns with us directly or with a relevant regulator.</p></div>
+      </div>
+      <p style="margin-top:1.5rem">To exercise any of these rights, contact us using the details in Section XII. We will respond within the timeframe required by applicable law.</p>
+    </section>
+
+    <section id="en-security">
+      <span class="sec-num">Ⅷ.</span>
+      <h2>How We Protect It</h2>
+      <p>We maintain administrative, technical, and physical safeguards appropriate to the sensitivity of the information we hold, including restricted staff access, secure record-keeping systems, and encrypted electronic storage. No method of storage or transmission is completely secure, but we work continuously to protect your information against unauthorized access, loss, or misuse.</p>
+    </section>
+
+    <section id="en-retention">
+      <span class="sec-num">Ⅸ.</span>
+      <h2>Retention</h2>
+      <p>We retain patient records for as long as required by applicable dental board regulations and law, and as needed to provide ongoing care, defend against claims, and meet our professional obligations. When information is no longer required, it is securely disposed of.</p>
+    </section>
+
+    <section id="en-minors">
+      <span class="sec-num">Ⅹ.</span>
+      <h2>Children's Information</h2>
+      <p>We provide care to patients of all ages. For patients under 18, information is collected and managed with the involvement of a parent or legal guardian, who may exercise the rights described in this policy on the patient's behalf, subject to applicable law.</p>
+    </section>
+
+    <section id="en-changes">
+      <span class="sec-num">Ⅺ.</span>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this policy from time to time to reflect changes in our practices or legal requirements. The effective date at the top of this page reflects the most recent revision. Material changes will be communicated through our website or, where appropriate, directly to patients.</p>
+    </section>
+
+    <section id="en-contact">
+      <span class="sec-num">Ⅻ.</span>
+      <div class="contact-block">
+        <span class="label">Questions or requests</span>
+        <h2 class="serif">We're glad to talk through any of this with you directly.</h2>
+        <p>For questions about this policy, to request your records, or to exercise any of your rights, reach our privacy contact below.</p>
+        <div class="contact-list">
+          <div><span>Privacy Officer —</span> Prime Dental Clinic</div>
+          <div><span>Email —</span> privacy@primedentalclinic.com</div>
+          <div><span>Phone —</span> (555) 010-2249</div>
+          <div><span>Mail —</span> 128 Orchard Avenue, Suite 4, Your City</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Prime Dental Clinic. All rights reserved.</span>
+    <span>This document is a template and should be reviewed by qualified legal counsel before publication.</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  const clinicWord = { sq: 'Klinikë', mk: 'Клиника', en: 'Clinic' };
+  const backWord = {
+    sq: 'Kthehu te faqja',
+    mk: 'Назад кон сајтот',
+    en: 'Back to site'
+  };
+
+  const switchBtns = document.querySelectorAll('.lang-switch button');
+  const pages = document.querySelectorAll('.lang-page');
+  const subEl = document.querySelector('.nav-logo .sub');
+  const backEl = document.querySelector('.nav-back');
+
+  function setLang(lang) {
+    document.body.setAttribute('data-active-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    pages.forEach(p => p.classList.toggle('active', p.getAttribute('data-lang') === lang));
+    switchBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
+    subEl.textContent = clinicWord[lang];
+    backEl.childNodes[0].textContent = backWord[lang] + ' ';
+    setupScrollSpy(lang);
+  }
+
+  switchBtns.forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+  });
+
+  let currentObserver = null;
+  function setupScrollSpy(lang) {
+    if (currentObserver) currentObserver.disconnect();
+    const activePage = document.querySelector('.lang-page[data-lang="' + lang + '"]');
+    const links = activePage.querySelectorAll('.toc a');
+    const sections = activePage.querySelectorAll('.policy-content section');
+    currentObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const link = activePage.querySelector('.toc a[href="#' + id + '"]');
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-110px 0px -70% 0px' });
+    sections.forEach(s => currentObserver.observe(s));
+  }
+
+  setupScrollSpy('sq');
+</script>
+
+</body>
+</html>
