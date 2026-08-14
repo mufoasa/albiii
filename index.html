@@ -2292,122 +2292,281 @@ Një ekip i specializuar në implantologji, kirurgji orale dhe kujdes dentar mod
     <div class="booking-grid">
 
       
-      <div class="booking-info">
-        <span class="section-eyebrow reveal">Rezervime · Kontakt Direkt</span>
+     <div class="booking-info">
+  <span class="section-eyebrow reveal">
+    Rezervime · Kontakt Direkt
+  </span>
 
-        <h2 class="section-h2 reveal reveal-d1" style="color:var(--cream)">
-          Buzëqeshja juaj<br>
-          <em style="color:var(--gold)">fillon me një telefonatë.</em>
-        </h2>
+  <h2 class="section-h2 reveal reveal-d1" style="color:var(--cream)">
+    Buzëqeshja juaj<br>
+    <em style="color:var(--gold)">fillon me një telefonatë.</em>
+  </h2>
 
-        <p class="reveal reveal-d2" style="color:rgba(245,242,238,.55);max-width:420px;line-height:1.8;margin-top:2rem">
-          Për rezervime, kontaktoni direkt klinikën. Nuk ka formularë, vetëm komunikim i shpejtë dhe personal.
-        </p>
+  <p
+    class="reveal reveal-d2"
+    style="color:rgba(245,242,238,.55);max-width:420px;line-height:1.8;margin-top:2rem"
+  >
+    Për rezervime, plotësoni formularin ose kontaktoni direkt klinikën.
+    Do t'ju kontaktojmë për të konfirmuar termin.
+  </p>
 
-        <div class="booking-info-items">
+  <div class="booking-info-items">
 
-          <div class="booking-info-item reveal reveal-d3">
-            <div class="bi-label">Telefon</div>
-            <a class="bi-val" href="tel:+38970209510">+389 70 209 510</a>
-          </div>
-
-          <div class="booking-info-item reveal reveal-d4">
-            <div class="bi-label">WhatsApp</div>
-            <a class="bi-val" href="https://wa.me/38970209510">Start chat →</a>
-          </div>
-
-          <div class="booking-info-item reveal reveal-d5">
-            <div class="bi-label">Orari</div>
-            <div class="bi-val">Hënë–Premte · 09:00 – 20:00</div>
-          </div>
-
-        </div>
-      </div>
-
-    
-<div class="reveal reveal-d2">
-  <div id="bookingFormWrap" style="
-    border: 1px solid var(--border-gold);
-    padding: 3rem;
-    background: linear-gradient(135deg, rgba(200,169,126,.05), transparent);
-  ">
-    <div style="
-      font-family:'Cormorant Garamond',serif;
-      font-size:1.5rem;
-      color:var(--cream);
-      font-weight:300;
-      margin-bottom:2rem;
-      padding-bottom:1.25rem;
-      border-bottom:1px solid rgba(245,242,238,.1);
-      letter-spacing:.02em;
-    ">Rezervo Termin</div>
-
-    <form id="bookingForm">
-
-      <div class="field-row">
-        <div class="field">
-          <label>Emri</label>
-          <input type="text" id="firstName" placeholder="Emri juaj" required>
-        </div>
-        <div class="field">
-          <label>Mbiemri</label>
-          <input type="text" id="lastName" placeholder="Mbiemri juaj" required>
-        </div>
-      </div>
-
-      <div class="field-row" style="margin-top:1.75rem">
-        <div class="field">
-          <label>Telefon</label>
-          <input type="tel" id="phone" placeholder="+389 00 000 000" required>
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="email" id="email" placeholder="email@juaj.com" required>
-        </div>
-      </div>
-
-      <div class="field" style="margin-top:1.75rem">
-        <label>Data e Takimit</label>
-        <input type="date" id="date" required>
-      </div>
-
-      <div class="field" style="margin-top:1.75rem">
-        <label>Orari</label>
-        <div class="time-slots" id="timeSlots"></div>
-        <input type="hidden" id="time" required>
-      </div>
-
-      <div id="message" style="
-        margin-top:1.25rem;
-        font-size:.75rem;
-        letter-spacing:.06em;
-        color:rgba(245,242,238,.45);
-        min-height:18px;
-      "></div>
-
-      <div class="form-footer" style="margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid rgba(245,242,238,.08)">
-        <span class="form-req">Të gjitha fushat janë të detyrueshme</span>
-        <button type="submit" class="submit-btn">
-          Rezervo Tani
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
-        </button>
-      </div>
-    </form>
-  </div>
-
-  <div id="bookingSuccess" class="success-box" style="display:none">
-    <div class="success-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5">
-        <polyline points="20 6 9 17 4 12"/>
-      </svg>
+    <div class="booking-info-item reveal reveal-d3">
+      <div class="bi-label">Telefon</div>
+      <a class="bi-val" href="tel:+38970209510">
+        +389 70 209 510
+      </a>
     </div>
-    <p class="success-h">Rezervimi u regjistrua.</p>
-    <p class="success-p">Do t'ju kontaktojmë brenda 2 orëve për konfirmim.<br>Faleminderit që zgjodhët klinikën tonë.</p>
+
+    <div class="booking-info-item reveal reveal-d4">
+      <div class="bi-label">WhatsApp</div>
+      <a class="bi-val" href="https://wa.me/38970209510">
+        Start chat →
+      </a>
+    </div>
+
+    <div class="booking-info-item reveal reveal-d5">
+      <div class="bi-label">Orari</div>
+      <div class="bi-val">
+        Hënë–Premte · 09:00 – 20:00
+      </div>
+    </div>
+
   </div>
 </div>
-</section>
+
+
+<div class="reveal reveal-d2">
+
+  <div
+    id="bookingFormWrap"
+    style="
+      border:1px solid var(--border-gold);
+      padding:3rem;
+      background:linear-gradient(
+        135deg,
+        rgba(200,169,126,.05),
+        transparent
+      );
+    "
+  >
+
+    <div
+      style="
+        font-family:'Cormorant Garamond',serif;
+        font-size:1.5rem;
+        color:var(--cream);
+        font-weight:300;
+        margin-bottom:2rem;
+        padding-bottom:1.25rem;
+        border-bottom:1px solid rgba(245,242,238,.1);
+        letter-spacing:.02em;
+      "
+    >
+      Rezervo Termin
+    </div>
+
+
+    <form
+      id="bookingForm"
+      action="https://formspree.io/f/xbgrkgkz"
+      method="POST"
+    >
+
+      <div class="field-row">
+
+        <div class="field">
+          <label>Emri</label>
+
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="Emri juaj"
+            required
+          >
+        </div>
+
+
+        <div class="field">
+          <label>Mbiemri</label>
+
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Mbiemri juaj"
+            required
+          >
+        </div>
+
+      </div>
+
+
+      <div
+        class="field-row"
+        style="margin-top:1.75rem"
+      >
+
+        <div class="field">
+          <label>Telefon</label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+389 00 000 000"
+            required
+          >
+        </div>
+
+
+        <div class="field">
+          <label>Email</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="email@juaj.com"
+            required
+          >
+        </div>
+
+      </div>
+
+
+      <div
+        class="field"
+        style="margin-top:1.75rem"
+      >
+
+        <label>Data e Takimit</label>
+
+        <input
+          type="date"
+          id="date"
+          name="date"
+          required
+        >
+
+      </div>
+
+
+      <div
+        class="field"
+        style="margin-top:1.75rem"
+      >
+
+        <label>Orari</label>
+
+        <div
+          class="time-slots"
+          id="timeSlots"
+        ></div>
+
+        <input
+          type="hidden"
+          id="time"
+          name="time"
+          required
+        >
+
+      </div>
+
+
+      <div
+        id="message"
+        style="
+          margin-top:1.25rem;
+          font-size:.75rem;
+          letter-spacing:.06em;
+          color:rgba(245,242,238,.45);
+          min-height:18px;
+        "
+      ></div>
+
+
+      <div
+        class="form-footer"
+        style="
+          margin-top:1.75rem;
+          padding-top:1.5rem;
+          border-top:1px solid rgba(245,242,238,.08)
+        "
+      >
+
+        <span class="form-req">
+          Të gjitha fushat janë të detyrueshme
+        </span>
+
+
+        <button
+          type="submit"
+          class="submit-btn"
+        >
+          Rezervo Tani
+
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+
+        </button>
+
+      </div>
+
+    </form>
+
+
+    <!-- SUCCESS MESSAGE -->
+
+    <div
+      id="bookingSuccess"
+      class="success-box"
+      style="display:none"
+    >
+
+      <div class="success-icon">
+
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--gold)"
+          stroke-width="1.5"
+        >
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+
+      </div>
+
+
+      <p class="success-h">
+        Kërkesa u dërgua.
+      </p>
+
+
+      <p class="success-p">
+        Do t'ju kontaktojmë brenda 2 orëve
+        për të konfirmuar termin.<br>
+        Faleminderit që zgjodhët klinikën tonë.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+    </section>
 
 
 <section class="section-pad bg-cream">
@@ -2658,88 +2817,193 @@ document.getElementById('ppAccept').addEventListener('click', () => {
   setTimeout(() => overlay.remove(), 400);
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const TIMES = [
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00'
+  ];
+
+  const slotsWrap = document.getElementById('timeSlots');
+  const hiddenTime = document.getElementById('time');
+  const form = document.getElementById('bookingForm');
+  const message = document.getElementById('message');
+  const success = document.getElementById('bookingSuccess');
+
+  if (!slotsWrap || !hiddenTime || !form) {
+    console.error('Booking form elements not found.');
+    return;
+  }
 
 
+  /* CREATE TIME BUTTONS */
 
-<script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+  TIMES.forEach(function (time) {
 
-const supabase = createClient(
-  'https://iwiwclbbflmykpklzgfj.supabase.co',
-  'sb_publishable_BRXsPkWLiAJq18wHAqndgw_bpQvo4Gu'
-);
+    const btn = document.createElement('button');
 
+    btn.type = 'button';
+    btn.className = 'time-btn';
+    btn.textContent = time;
 
-const TIMES = ['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00'];
-const slotsWrap = document.getElementById('timeSlots');
-const hiddenTime = document.getElementById('time');
+    btn.addEventListener('click', function () {
 
-TIMES.forEach(t => {
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'time-btn';
-  btn.textContent = t;
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    hiddenTime.value = t;
+      document
+        .querySelectorAll('.time-btn')
+        .forEach(function (b) {
+          b.classList.remove('selected');
+        });
+
+      btn.classList.add('selected');
+
+      hiddenTime.value = time;
+
+      message.textContent = '';
+    });
+
+    slotsWrap.appendChild(btn);
+
   });
-  slotsWrap.appendChild(btn);
-});
 
 
-document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+  /* FORM SUBMISSION */
 
-  const msg   = document.getElementById('message');
-  const name  = `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`;
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const date  = document.getElementById('date').value;
-  const time  = document.getElementById('time').value;
+  form.addEventListener('submit', async function (e) {
 
-  if (!time) {
-    msg.style.color = 'rgba(196,112,112,.8)';
-    msg.textContent = 'Ju lutem zgjidhni një orar.';
-    return;
-  }
+    e.preventDefault();
 
-  msg.style.color = 'rgba(245,242,238,.45)';
-  msg.textContent = 'Po kontrollohet nëse është i lirë termini…';
 
-  const { data: existing, error: checkError } = await supabase
-    .from('appointments')
-    .select('id')
-    .eq('appointment_date', date)
-    .eq('appointment_time', time);
+    /* REQUIRE TIME */
 
-  if (checkError) {
-    msg.style.color = 'rgba(196,112,112,.8)';
-    msg.textContent = checkError.message;
-    return;
-  }
+    if (!hiddenTime.value) {
 
-  if (existing.length > 0) {
-    msg.style.color = 'rgba(196,112,112,.8)';
-    msg.textContent = 'Ky orar nuk është i disponueshëm. Ju lutem zgjidhni një datë/orë tjetër.';
-    return;
-  }
+      message.style.color =
+        'rgba(196,112,112,.8)';
 
-  const { error } = await supabase
-    .from('appointments')
-    .insert([{ name, phone, email, appointment_date: date, appointment_time: time }]);
+      message.textContent =
+        'Ju lutem zgjidhni një orar.';
 
-  if (error) {
-    msg.style.color = 'rgba(196,112,112,.8)';
-    msg.textContent = error.message;
-    return;
-  }
+      return;
+    }
 
-  document.getElementById('bookingFormWrap').style.display = 'none';
-  document.getElementById('bookingSuccess').style.display  = 'block';
+
+    /* LOADING */
+
+    const submitButton =
+      form.querySelector('button[type="submit"]');
+
+    const originalButtonHTML =
+      submitButton.innerHTML;
+
+    submitButton.disabled = true;
+
+    submitButton.style.opacity = '0.6';
+
+    submitButton.innerHTML =
+      'Duke dërguar…';
+
+    message.style.color =
+      'rgba(245,242,238,.45)';
+
+    message.textContent =
+      'Duke dërguar kërkesën…';
+
+
+    try {
+
+      const response = await fetch(
+        form.action,
+        {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        }
+      );
+
+
+      /* SUCCESS */
+
+      if (response.ok) {
+
+        form.style.display = 'none';
+
+        success.style.display = 'block';
+
+        return;
+      }
+
+
+      /* ERROR */
+
+      let errorText =
+        'Diçka shkoi keq. Ju lutem provoni përsëri.';
+
+      try {
+
+        const data = await response.json();
+
+        if (data.errors && data.errors.length) {
+
+          errorText = data.errors
+            .map(function (error) {
+              return error.message;
+            })
+            .join(', ');
+        }
+
+      } catch (err) {
+        // Use default error message
+      }
+
+
+      message.style.color =
+        'rgba(196,112,112,.8)';
+
+      message.textContent =
+        errorText;
+
+      submitButton.disabled = false;
+
+      submitButton.style.opacity = '1';
+
+      submitButton.innerHTML =
+        originalButtonHTML;
+
+
+    } catch (error) {
+
+      console.error(
+        'Formspree error:',
+        error
+      );
+
+      message.style.color =
+        'rgba(196,112,112,.8)';
+
+      message.textContent =
+        'Nuk mund të dërgohej kërkesa. Ju lutem provoni përsëri.';
+
+      submitButton.disabled = false;
+
+      submitButton.style.opacity = '1';
+
+      submitButton.innerHTML =
+        originalButtonHTML;
+    }
+
+  });
+
 });
 </script>
-
 
 
 <script>
