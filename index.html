@@ -2369,161 +2369,185 @@ Një ekip i specializuar në implantologji, kirurgji orale dhe kujdes dentar mod
 
 
     <form
-      id="bookingForm"
-      action="https://formspree.io/f/xbgrkgkz"
-      method="POST"
+  id="bookingForm"
+  action="https://formspree.io/f/xbgrkgkz"
+  method="POST"
+>
+
+  <div class="field-row">
+
+    <div class="field">
+      <label>Emri</label>
+
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        placeholder="Emri juaj"
+        required
+      >
+    </div>
+
+
+    <div class="field">
+      <label>Mbiemri</label>
+
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Mbiemri juaj"
+        required
+      >
+    </div>
+
+  </div>
+
+
+  <div
+    class="field-row"
+    style="margin-top:1.75rem"
+  >
+
+    <div class="field">
+      <label>Telefon</label>
+
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="+389 00 000 000"
+        required
+      >
+    </div>
+
+
+    <div class="field">
+      <label>Email</label>
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="email@juaj.com"
+        required
+      >
+    </div>
+
+  </div>
+
+
+  <div
+    class="field"
+    style="margin-top:1.75rem"
+  >
+
+    <label>Data e Takimit</label>
+
+    <input
+      type="date"
+      id="date"
+      name="date"
+      required
     >
 
-      <div class="field-row">
-
-        <div class="field">
-          <label>Emri</label>
-
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Emri juaj"
-            required
-          >
-        </div>
+  </div>
 
 
-        <div class="field">
-          <label>Mbiemri</label>
+  <div
+    class="field"
+    style="margin-top:1.75rem"
+  >
 
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            placeholder="Mbiemri juaj"
-            required
-          >
-        </div>
+    <label>Orari</label>
 
-      </div>
+    <select
+      id="time"
+      name="time"
+      required
+      style="
+        width:100%;
+        padding:1rem 1.1rem;
+        background:rgba(245,242,238,.04);
+        border:1px solid rgba(245,242,238,.15);
+        color:var(--cream);
+        font-family:inherit;
+        font-size:.9rem;
+        outline:none;
+        cursor:pointer;
+      "
+    >
+
+      <option value="" disabled selected>
+        Zgjidhni orarin
+      </option>
+
+      <option value="09:00">09:00</option>
+      <option value="10:00">10:00</option>
+      <option value="11:00">11:00</option>
+      <option value="12:00">12:00</option>
+      <option value="13:00">13:00</option>
+      <option value="14:00">14:00</option>
+      <option value="15:00">15:00</option>
+      <option value="16:00">16:00</option>
+      <option value="17:00">17:00</option>
+      <option value="18:00">18:00</option>
+      <option value="19:00">19:00</option>
+
+    </select>
+
+  </div>
 
 
-      <div
-        class="field-row"
-        style="margin-top:1.75rem"
+  <div
+    id="message"
+    style="
+      margin-top:1.25rem;
+      font-size:.75rem;
+      letter-spacing:.06em;
+      color:rgba(245,242,238,.45);
+      min-height:18px;
+    "
+  ></div>
+
+
+  <div
+    class="form-footer"
+    style="
+      margin-top:1.75rem;
+      padding-top:1.5rem;
+      border-top:1px solid rgba(245,242,238,.08)
+    "
+  >
+
+    <span class="form-req">
+      Të gjitha fushat janë të detyrueshme
+    </span>
+
+
+    <button
+      type="submit"
+      class="submit-btn"
+    >
+
+      Rezervo Tani
+
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
       >
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
 
-        <div class="field">
-          <label>Telefon</label>
+    </button>
 
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="+389 00 000 000"
-            required
-          >
-        </div>
+  </div>
 
-
-        <div class="field">
-          <label>Email</label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="email@juaj.com"
-            required
-          >
-        </div>
-
-      </div>
-
-
-      <div
-        class="field"
-        style="margin-top:1.75rem"
-      >
-
-        <label>Data e Takimit</label>
-
-        <input
-          type="date"
-          id="date"
-          name="date"
-          required
-        >
-
-      </div>
-
-
-      <div
-        class="field"
-        style="margin-top:1.75rem"
-      >
-
-        <label>Orari</label>
-
-        <div
-          class="time-slots"
-          id="timeSlots"
-        ></div>
-
-        <input
-          type="hidden"
-          id="time"
-          name="time"
-          required
-        >
-
-      </div>
-
-
-      <div
-        id="message"
-        style="
-          margin-top:1.25rem;
-          font-size:.75rem;
-          letter-spacing:.06em;
-          color:rgba(245,242,238,.45);
-          min-height:18px;
-        "
-      ></div>
-
-
-      <div
-        class="form-footer"
-        style="
-          margin-top:1.75rem;
-          padding-top:1.5rem;
-          border-top:1px solid rgba(245,242,238,.08)
-        "
-      >
-
-        <span class="form-req">
-          Të gjitha fushat janë të detyrueshme
-        </span>
-
-
-        <button
-          type="submit"
-          class="submit-btn"
-        >
-          Rezervo Tani
-
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
-
-        </button>
-
-      </div>
-
-    </form>
+</form>
 
 
     <!-- SUCCESS MESSAGE -->
@@ -2820,57 +2844,15 @@ document.getElementById('ppAccept').addEventListener('click', () => {
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  const TIMES = [
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00'
-  ];
-
-  const slotsWrap = document.getElementById('timeSlots');
-  const hiddenTime = document.getElementById('time');
   const form = document.getElementById('bookingForm');
+  const time = document.getElementById('time');
   const message = document.getElementById('message');
   const success = document.getElementById('bookingSuccess');
 
-  if (!slotsWrap || !hiddenTime || !form) {
-    console.error('Booking form elements not found.');
+  if (!form) {
+    console.error('Booking form not found.');
     return;
   }
-
-
-  /* CREATE TIME BUTTONS */
-
-  TIMES.forEach(function (time) {
-
-    const btn = document.createElement('button');
-
-    btn.type = 'button';
-    btn.className = 'time-btn';
-    btn.textContent = time;
-
-    btn.addEventListener('click', function () {
-
-      document
-        .querySelectorAll('.time-btn')
-        .forEach(function (b) {
-          b.classList.remove('selected');
-        });
-
-      btn.classList.add('selected');
-
-      hiddenTime.value = time;
-
-      message.textContent = '';
-    });
-
-    slotsWrap.appendChild(btn);
-
-  });
 
 
   /* FORM SUBMISSION */
@@ -2880,9 +2862,9 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
 
 
-    /* REQUIRE TIME */
+    /* CHECK TIME */
 
-    if (!hiddenTime.value) {
+    if (!time.value) {
 
       message.style.color =
         'rgba(196,112,112,.8)';
@@ -2894,7 +2876,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    /* LOADING */
+    /* LOADING STATE */
 
     const submitButton =
       form.querySelector('button[type="submit"]');
@@ -2918,6 +2900,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
 
+      /* SEND TO FORMSPREE */
+
       const response = await fetch(
         form.action,
         {
@@ -2936,32 +2920,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
         form.style.display = 'none';
 
-        success.style.display = 'block';
+        if (success) {
+          success.style.display = 'block';
+        }
 
         return;
       }
 
 
-      /* ERROR */
+      /* FORMSPREE ERROR */
 
       let errorText =
         'Diçka shkoi keq. Ju lutem provoni përsëri.';
 
+
       try {
 
-        const data = await response.json();
+        const data =
+          await response.json();
 
         if (data.errors && data.errors.length) {
 
-          errorText = data.errors
-            .map(function (error) {
-              return error.message;
-            })
-            .join(', ');
+          errorText =
+            data.errors
+              .map(function (error) {
+                return error.message;
+              })
+              .join(', ');
         }
 
       } catch (err) {
-        // Use default error message
+        // Keep default error message
       }
 
 
@@ -2970,6 +2959,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       message.textContent =
         errorText;
+
 
       submitButton.disabled = false;
 
@@ -2986,11 +2976,13 @@ document.addEventListener('DOMContentLoaded', function () {
         error
       );
 
+
       message.style.color =
         'rgba(196,112,112,.8)';
 
       message.textContent =
         'Nuk mund të dërgohej kërkesa. Ju lutem provoni përsëri.';
+
 
       submitButton.disabled = false;
 
